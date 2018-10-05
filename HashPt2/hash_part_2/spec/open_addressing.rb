@@ -107,34 +107,34 @@ end
 
 star_wars_movies = OpenAddressing.new(6)
 
-# # Index Test
-# i = star_wars_movies.index('Star Wars: A New Hope', 6)
-# puts i
+# Index Test
+i = star_wars_movies.index('Star Wars: A New Hope', 6)
+puts i
 
-# # Key Test
-# # This is essentially another test of the index method
-# key = 'test'
-# star_wars_movies.index(key, 6)
+# Key Test
+# This is essentially another test of the index method
+key = 'test'
+star_wars_movies.index(key, 6)
 
-# # Collision Test (table not full)
-# # Does not resize when table is not full
-# hash = OpenAddressing.new(4)
-# hash['key'] = 'value'
-# puts hash.size
-# hash['key'] = 'second value'
-# puts hash.size
-# # see the collision resolution in action!
-# p hash
+# Collision Test (table not full)
+# Does not resize when table is not full
+hash = OpenAddressing.new(4)
+hash['key'] = 'value'
+puts hash.size
+hash['key'] = 'second value'
+puts hash.size
+# see the collision resolution in action!
+p hash
 
-# # Collision Test 2 (table full)
-# # Resizes table when full
-# hash = OpenAddressing.new(1)
-# hash['key'] = 'value'
-# p hash
-# puts hash.size
-# hash['key'] = 'second value'
-# puts hash.size
-# p hash
+# Collision Test 2 (table full)
+# Resizes table when full
+hash = OpenAddressing.new(1)
+hash['key'] = 'value'
+p hash
+puts hash.size
+hash['key'] = 'second value'
+puts hash.size
+p hash
 
 # Set Values
 star_wars_movies['Star Wars: The Phantom Menace'] = 'Number One'
@@ -152,30 +152,30 @@ puts star_wars_movies['Star Wars: A New Hope']
 puts star_wars_movies['Star Wars: The Empire Strikes Back']
 puts star_wars_movies['Star Wars: Return of the Jedi']
 
-# # Open Bucket Test
-# # If hash is full, returns -1
-# inception = OpenAddressing.new(1)
-# inception['The Original'] = 'The Best Movie Ever'
-# puts inception.next_open_index(0)
+# Open Bucket Test
+# If hash is full, returns -1
+inception = OpenAddressing.new(1)
+inception['The Original'] = 'The Best Movie Ever'
+puts inception.next_open_index(0)
 
-# # Resize Test 1
-# # Resize when called
-# movies = OpenAddressing.new(6)
-# puts movies.size
-# movies.resize
-# puts movies.size
+# Resize Test 1
+# Resize when called
+movies = OpenAddressing.new(6)
+puts movies.size
+movies.resize
+puts movies.size
 
 # Resize Test 2
 # Copies values on resize
-# movies = OpenAddressing.new(6)
-# puts movies.size
-# movies['A New Hope'] = 'Average'
-# movies['Empire Strikes Back'] = 'Excellent'
-# movies['Return of the Jedi'] = 'The Best'
-# puts movies.size
-# movies.resize
-# puts movies['A New Hope']
-# puts movies['Empire Strikes Back']
-# puts movies['Return of the Jedi']
-# puts movies.size
-# p movies
+movies = OpenAddressing.new(6)
+puts movies.size
+movies['A New Hope'] = 'Average'
+movies['Empire Strikes Back'] = 'Excellent'
+movies['Return of the Jedi'] = 'The Best'
+puts movies.size
+movies.resize
+puts movies['A New Hope']
+puts movies['Empire Strikes Back']
+puts movies['Return of the Jedi']
+puts movies.size
+p movies

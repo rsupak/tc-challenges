@@ -27,4 +27,4 @@
 
 # To run the rspec from the main directory
 
-$ bundle exec rspec spec/open_addressing_spec.rb
+$ bundle exec rspec
