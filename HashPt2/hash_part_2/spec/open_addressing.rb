@@ -50,6 +50,7 @@ class OpenAddressing
   # If using a dynamic table, hash will never be full
   def next_open_index(index)
     return -1 if full?
+
     # searches for next available index using linear probing
     while @table[index]
       if index < size - 1
@@ -85,27 +86,21 @@ class OpenAddressing
   # creates a key array for interating over keys
   def keys
     key_array = []
-    @table.each do |item|
-      key_array << item.key
-    end
+    @table.map { |item| key_array << item.key}
     key_array
   end
 
   # creates a values array for iterating over values
   def values
     value_array = []
-    @table.each do |item|
-      value_array << item.value
-    end
+    @table.map { |item| value_array << item.value }
     value_array
   end
 
   # creates a key/value array for iterating over key/value pairs
   def items
     item_array = []
-    @table.each do |item|
-      item_array << [item.key, item.value] if item
-    end
+    @table.map { |item| item_array << [item.key, item.value] if item }
     item_array
   end
 end
@@ -142,20 +137,20 @@ star_wars_movies = OpenAddressing.new(6)
 # p hash
 
 # Set Values
-# star_wars_movies['Star Wars: The Phantom Menace'] = 'Number One'
-# star_wars_movies['Star Wars: Attack of the Clones'] = 'Number Two'
-# star_wars_movies['Star Wars: Revenge of the Sith'] = 'Number Three'
-# star_wars_movies['Star Wars: A New Hope'] = 'Number Four'
-# star_wars_movies['Star Wars: The Empire Strikes Back'] = 'Number Five'
-# star_wars_movies['Star Wars: Return of the Jedi'] = 'Number Six'
+star_wars_movies['Star Wars: The Phantom Menace'] = 'Number One'
+star_wars_movies['Star Wars: Attack of the Clones'] = 'Number Two'
+star_wars_movies['Star Wars: Revenge of the Sith'] = 'Number Three'
+star_wars_movies['Star Wars: A New Hope'] = 'Number Four'
+star_wars_movies['Star Wars: The Empire Strikes Back'] = 'Number Five'
+star_wars_movies['Star Wars: Return of the Jedi'] = 'Number Six'
 
-# # Returns Values when key is given
-# puts star_wars_movies['Star Wars: The Phantom Menace']
-# puts star_wars_movies['Star Wars: Attack of the Clones']
-# puts star_wars_movies['Star Wars: Revenge of the Sith']
-# puts star_wars_movies['Star Wars: A New Hope']
-# puts star_wars_movies['Star Wars: The Empire Strikes Back']
-# puts star_wars_movies['Star Wars: Return of the Jedi']
+# Returns Values when key is given
+puts star_wars_movies['Star Wars: The Phantom Menace']
+puts star_wars_movies['Star Wars: Attack of the Clones']
+puts star_wars_movies['Star Wars: Revenge of the Sith']
+puts star_wars_movies['Star Wars: A New Hope']
+puts star_wars_movies['Star Wars: The Empire Strikes Back']
+puts star_wars_movies['Star Wars: Return of the Jedi']
 
 # # Open Bucket Test
 # # If hash is full, returns -1
@@ -172,15 +167,15 @@ star_wars_movies = OpenAddressing.new(6)
 
 # Resize Test 2
 # Copies values on resize
-movies = OpenAddressing.new(6)
-puts movies.size
-movies['A New Hope'] = 'Average'
-movies['Empire Strikes Back'] = 'Excellent'
-movies['Return of the Jedi'] = 'The Best'
-puts movies.size
-movies.resize
-puts movies['A New Hope']
-puts movies['Empire Strikes Back']
-puts movies['Return of the Jedi']
-puts movies.size
-p movies
+# movies = OpenAddressing.new(6)
+# puts movies.size
+# movies['A New Hope'] = 'Average'
+# movies['Empire Strikes Back'] = 'Excellent'
+# movies['Return of the Jedi'] = 'The Best'
+# puts movies.size
+# movies.resize
+# puts movies['A New Hope']
+# puts movies['Empire Strikes Back']
+# puts movies['Return of the Jedi']
+# puts movies.size
+# p movies
