@@ -86,7 +86,7 @@ class OpenAddressing
   # creates a key array for interating over keys
   def keys
     key_array = []
-    @table.map { |item| key_array << item.key}
+    @table.map { |item| key_array << item.key }
     key_array
   end
 
