@@ -1,3 +1,5 @@
+# node class built specifically for heap tree
+# note, :id has been added to node for heap insertion
 class Node
   attr_accessor :title
   attr_accessor :rating

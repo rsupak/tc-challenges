@@ -1,5 +1,5 @@
 # tcvc-data-structure-challenge
-Binary Search Tree
+Min-Heap Binary Tree
 
 ### Description
 
@@ -7,8 +7,6 @@ Binary Search Tree
 1. Ruby 2.5.x
   1. Bundler
 1. Rspec
-
-
 
 ## Local Deployment
 ```bash
@@ -21,6 +19,7 @@ using your text editor add the following dependencies to the Gemfile
 
   gem "byebug"
   gem "rspec", "~> 3.2.0"
+  gem "pry"
 ```
 
 
@@ -41,5 +40,5 @@ bundle exec rspec
 ```
 
 ## Notes
-# Link to Google Drive File for video
-https://drive.google.com/drive/folders/16Z0SYaIyC0h03kzbjFqZNOLE5D-sJay2?usp=sharing
+# Link to Demo Video
+
