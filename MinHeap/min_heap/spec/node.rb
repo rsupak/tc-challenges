@@ -11,6 +11,11 @@ class Node
   def initialize(title, rating)
     @title = title
     @rating = rating
+    @parent = nil
     @id = nil
+  end
+
+  def to_s
+    "#{@title}: #{@rating}"
   end
 end

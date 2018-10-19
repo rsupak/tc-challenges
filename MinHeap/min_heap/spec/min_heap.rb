@@ -8,7 +8,6 @@ require 'byebug'
 class MinHeap
   attr_reader :root
   attr_reader :count
-  attr_reader :row_number
 
   def initialize(root)
     @root = root
@@ -34,30 +33,20 @@ class MinHeap
     @count += 1
   end
 
-  # deletes node
-  # see private method remove()
-  def delete(node, data)
-    return if data.nil?
-
-    target = find(node, data)
-    return if target.nil?
-
-    remove(node, target)
-  end
-
   # The find method recursively searches the left and right branches
   # until it reaches the terminal leaf or finds and returns the node.
   # O(n) time complexity. Because the nodes can be in any branch as long
   # as it follows the rule that states the root of each branch must be
   # <= each subsequent branch. The entire structure, potentially, must be
   # searched until the node is located.
-  def find(node, data)
-    return node if node.rating == data
+  # data is rating data
+  def find(root, data)
+    return root if root.rating == data
 
-    ltree = !node.left.nil? ? find(node.left, data) : nil
+    ltree = !root.left.nil? ? find(root.left, data) : nil
     return ltree unless ltree.nil?
 
-    !node.right.nil? ? find(node.right, data) : nil
+    !root.right.nil? ? find(root.right, data) : nil
   end
 
   # This method creates takes advantage of Ruby's built in
@@ -70,10 +59,22 @@ class MinHeap
     queue.enq(@root)
     until queue.empty?
       value = queue.deq
-      puts "#{value.title}: #{value.rating}" unless value.title.nil?
+      puts value unless value.title.nil?
       queue.enq(value.left) if value.left
       queue.enq(value.right) if value.right
     end
+  end
+
+  # deletes node
+  # see private method remove()
+  def delete(root, data)
+    return if data.nil?
+
+    target = find(root, data)
+    return if target.nil?
+
+    last_node = find_last(@root, @count)
+    target == last_node ? remove_last_node(target) : remove(target)
   end
 
   private
@@ -81,13 +82,14 @@ class MinHeap
   # similar to the find method, however method is looking for
   # a specific id rather than a node rating.
   # parent.id will always be equal to target.id / 2
-  def find_parent(node, target)
-    return node if node.id == target.id / 2
+  # data is id data
+  def find_parent(root, data)
+    return root if root.id == data.id / 2
 
-    ltree = !node.left.nil? ? find_parent(node.left, target) : nil
+    ltree = !root.left.nil? ? find_parent(root.left, data) : nil
     return ltree unless ltree.nil?
 
-    !node.right.nil? ? find_parent(node.right, target) : nil
+    !root.right.nil? ? find_parent(root.right, data) : nil
   end
 
   # parity check for monitoring min-heap root rules.
@@ -95,15 +97,20 @@ class MinHeap
   # until smallest nodes are in branch-root locations.
   def heapify(node)
     parent = node.parent
-    left_child = node.parent.left
-    right_child = node.parent.right
-    until node.rating > node.parent.rating
-      if parent.rating > left_child.rating
-        swap_node(parent, left_child)
-      elsif parent.rating > right_child.rating
-        swap_node(parent, right_child)
+    left_child = parent.left
+    right_child = parent.right
+    until node.rating > parent.rating
+      if ![left_child, right_child].include?(nil)
+        if left_child.rating < right_child.rating
+          swap_node(parent, left_child)
+        else
+          swap_node(parent, right_child)
+        end
+      else
+        swap_node(parent, right_child) if left_child.nil?
+        swap_node(parent, left_child) if right_child.nil?
       end
-      heapify(parent) unless node.parent.id == 1
+      heapify(parent) unless parent.id == 1
     end
   end
 
@@ -119,59 +126,50 @@ class MinHeap
   # place of the removed node, then last node is heapified to sort out
   # proper priority order. Finally, the count must be decrimented to ensure
   # insertion order of a new node.
-  def remove(node, target)
-    last_node = find_last(node, @count)
-    parent = find_parent(node, target)
-
-    if target == parent.left
-      remove_left(target, parent, last_node)
-    elsif target == parent.right
-      remove_right(target, parent, last_node)
-    end
-    @count -= 1
+  def remove(target)
+    last_node = find_last(@root, @count)
+    swap_node(target, last_node)
+    remove_last_node(last_node)
+    down_heap(target)
   end
 
-  def find_last(node, target)
-    return node if node.id == target
+  def down_heap(target)
+    return if [target.left, target.right].all?(&:nil?)
 
-    ltree = !node.left.nil? ? find_last(node.left, target) : nil
+    down = if ![target.left, target.right].include?(nil)
+             find_smallest_child(target.left, target.right)
+           else
+             target.left.nil? ? target.right : target.left
+           end
+
+    swap_node(target, down) if target.rating > down.rating
+    down_heap(down)
+  end
+
+  def find_last(node, data)
+    return node if node.id == data
+
+    ltree = !node.left.nil? ? find_last(node.left, data) : nil
     return ltree unless ltree.nil?
 
-    !node.right.nil? ? find_last(node.right, target) : nil
+    !node.right.nil? ? find_last(node.right, data) : nil
   end
 
-  def remove_left(target, parent, last_node)
-    if target == last_node
-      parent.left = nil
-    else
-      remove_swap(last_node, target)
-      parent.left = last_node
-      heapify_swap(parent.left)
-    end
+  def find_smallest_child(left, right)
+    down = left if left.rating < right.rating
+    down = right if right.rating < left.rating
+    down
   end
 
-  def remove_right(target, parent, last_node)
-    if target == last_node
-      parent.right = nil
-    else
-      remove_swap(last_node, target)
-      parent.right = last_node
-      heapify_swap(parent.right)
-    end
-  end
-
-  def remove_swap(target, node)
-    node.left = target.left
-    node.right = target.right
-  end
-
-  def heapify_swap(node)
-    heapify(node.left) unless node.left.nil?
-    heapify(node.right) unless node.right.nil?
+  def remove_last_node(target)
+    parent = target.parent
+    parent.right == target ? parent.right = nil : parent.left = nil
+    @count -= 1
   end
 end
 
-root = Node.new('The Matrix', 87)
+node0 = Node.new('The Matrix', 87)
+root = node0
 heap = MinHeap.new(root)
 
 node1 = Node.new('Pacific Rim', 72)
@@ -206,7 +204,7 @@ node11 = Node.new('Mad Max 2: The Road Warrior', 98)
 # heap.insert(root, node4)
 # heap.insert(root, node5)
 # heap.insert(root, node6)
-# puts "Title: #{heap.find(root, node6.rating).title} | Rating: #{heap.find(root, node6.rating).rating}"
+# puts "Title: #{heap.find(node0, node6.rating).title} | Rating: #{heap.find(node0, node6.rating).rating}"
 
 # # Find Test: right-left
 # heap.insert(root, node2)
@@ -214,15 +212,15 @@ node11 = Node.new('Mad Max 2: The Road Warrior', 98)
 # heap.insert(root, node11)
 # heap.insert(root, node9)
 # heap.insert(root, node8)
-# puts "Title: #{heap.find(root, node8.rating).title} | Rating: #{heap.find(root, node8.rating).rating}"
+# puts "Title: #{heap.find(node0, node8.rating).title} | Rating: #{heap.find(node0, node8.rating).rating}"
 
-# Delete Test: left-right
+# # Delete Test: left-right
 # heap.insert(root, node6)
 # heap.insert(root, node2)
 # heap.insert(root, node4)
 # heap.insert(root, node5)
-# heap.delete(root, node5.rating)
-# p heap.find(root, node5.rating)
+# heap.delete(node0, node5.rating)
+# p heap.find(node0, node5.rating)
 # puts '**Printing Current Tree**'
 # heap.printf
 
@@ -232,11 +230,12 @@ node11 = Node.new('Mad Max 2: The Road Warrior', 98)
 # heap.insert(root, node2)
 # heap.insert(root, node5)
 # heap.insert(root, node11)
-# heap.delete(root, node11.rating)
-# p heap.find(root, node11.rating)
+# heap.delete(node0, node11.rating)
+# p heap.find(node0, node11.rating)
 # puts '**Printing Current Tree**'
 # heap.printf
 
+# Print Test: Full Tree
 # heap.insert(root, node9)
 # heap.insert(root, node10)
 # heap.insert(root, node3)
@@ -247,4 +246,27 @@ node11 = Node.new('Mad Max 2: The Road Warrior', 98)
 # heap.insert(root, node7)
 # heap.insert(root, node6)
 # heap.insert(root, node11)
+# heap.printf
+
+# # Delete Test: central-node / root-node
+# # The following test is not in the original build request
+# # But I wanted to make sure I could sure I could delete a non-leaf node
+# # and still get the same reheap results
+# # The Matrix: 87
+# # District 9: 90
+# # The Shawshank Redemption: 91
+# # The Martian: 92
+# # Star Wars: A New Hope: 93
+heap.insert(root, node6)
+heap.insert(root, node7)
+heap.insert(root, node8)
+heap.insert(root, node9)
+heap.insert(root, node10)
+heap.insert(root, node11)
+# heap.delete(root, node0.rating)
+# heap.delete(root, node6.rating)
+# heap.delete(root, node7.rating)
+# heap.delete(root, node8.rating)
+# heap.delete(root, node9.rating)
+# puts ""
 # heap.printf
