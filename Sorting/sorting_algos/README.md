@@ -1,5 +1,8 @@
 # tcvc-data-structure-challenge
-Bubble Sort and Bucket Sort Algorithms
+Sort Algorithms
+1. BubbleSort
+2. BucketSort
+3. HeapSort
 
 ### Description
 
@@ -64,5 +67,9 @@ HeapSort :
 bundle exec rspec heap_sort_spec.rb
 ```
 ## Notes
-# Link to Demo Video
+# Link to Demo Videos
+BubbleSort and BucketSort:
 https://youtu.be/t-VBe-900eM
+
+HeapSort:
+

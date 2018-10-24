@@ -23,3 +23,8 @@ end
 def swap(array, first, last)
   array[first], array[last] = array[last], array[first]
 end
+
+shuffled_array = Array.new(10) { rand(-100...100) }
+
+puts "Random Array: #{shuffled_array}"
+puts "Sorted Array: #{heap_sort(shuffled_array)}"
