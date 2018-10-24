@@ -45,10 +45,24 @@ because this particular rspec uses `require_relative`
 all files to be tested should also be in the spec directory
 
 ## Running Tests
-```
+```bash
 bundle exec rspec
 ```
+The above command will run all of the tests in the Rspec
+in order to run the tests individually:
 
+BubbleSort :  
+```bash 
+bundle exec rspec bubble_sort_spec.rb
+```
+BucketSort :  
+```bash
+bundle exec rspec bucket_sort_spec.rb
+```
+HeapSort :
+```bash
+bundle exec rspec heap_sort_spec.rb
+```
 ## Notes
 # Link to Demo Video
 https://youtu.be/t-VBe-900eM

@@ -22,19 +22,36 @@ end
 
 def sorter(buckets)
   buckets.each do |bucket|
-    bubble_sort(bucket)
+    heap_sort(bucket)
   end
 end
 
-def bubble_sort(array)
-  swap = false
-  array.each_index do |index|
-    next if index + 1 == array.length
+def heap_sort(array)
+  build_heap(array)
+  last = array.size - 1
+  until last <= 0
+    swap(array, 0, last)
+    last -= 1
+    # p build_heap(array[0..last])
+    array[0..last] = build_heap(array[0..last])
+  end
+  array
+end
 
-    if array[index] >= array[index + 1]
-      swap = true
-      array[index], array[index + 1] = array[index + 1], array[index]
+def build_heap(array)
+  array.each_index do |i|
+    if array[i] > array [i / 2]
+      swap(array, i, i / 2)
+      build_heap(array)
     end
-    bubble_sort(array) if swap
   end
 end
+
+def swap(array, first, last)
+  array[first], array[last] = array[last], array[first]
+end
+
+# shuffled_array = Array.new(20) { rand(-100...100) }
+# puts "Buckets: #{fill_buckets(shuffled_array, 3)}"
+# # puts "Random Array: #{shuffled_array}"
+# puts "Sorted Array: #{bucket_sort(shuffled_array)}"
