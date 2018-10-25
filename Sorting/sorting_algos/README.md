@@ -6,7 +6,7 @@ Sort Algorithms
 
 ### Description
 
-Bubble sort and Bucket sor Algorithms are used to sort 
+Bubble sort and Bucket sort Algorithms are used to sort 
 comparable items in an array. Bubble sort, "bubbles" the smaller values
 "up" or to the left of an array and larger values are "sink" or move
 to the right in the array by comparing the two adjacent values and swapping
@@ -14,12 +14,17 @@ the values left if smaller and right if larger.
 
 Bucket sort divides the comparables into buckets, sorts each bucket using 
 another sorting algorithm to sort the now smaller collections in each bucket, 
-then concatenates the buckets into one larger array, sorted. 
+then concatenates the buckets into one larger array, sorted.
+
+Heap sort utilizes the max heap data structure to quickly identify the maximum value
+in the array in order to place it in the largest available array index, ultimately
+ordering the array from smallest to largest. The heap_sort algorithm is a much more 
+efficient sorting algorithm than bubblesort and bucketsort.
 
 ## Prerequisites
 1. Ruby 2.5.x
-  1. Bundler
-1. Rspec
+2. Bundler
+3. Rspec
 
 ## Local Deployment
 ```bash
@@ -72,4 +77,4 @@ BubbleSort and BucketSort:
 https://youtu.be/t-VBe-900eM
 
 HeapSort:
-
+https://youtu.be/eFYcDbdS944
