@@ -16,5 +16,7 @@ def insertion_sort(array)
   end
 end
 
-array = [12, 11, 13, -11, 5, 6]
-p insertion_sort(array)
+shuffled_array = Array.new(10) { rand(-100...100) }
+
+puts "Random Array: #{shuffled_array}"
+puts "Sorted Array: #{insertion_sort(shuffled_array)}"
