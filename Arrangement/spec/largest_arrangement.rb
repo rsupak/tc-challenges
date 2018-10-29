@@ -43,11 +43,20 @@ def compare(left, right)
 end
 
 ## Test Cases
-# [4, 50, 8, 145] = 8_504_145
+puts "[4, 50, 8, 145] should be 8504145"
 puts largest_arrangement([4, 50, 8, 145]).to_s
-# [4, 40, 7] = 7440
+puts
+puts "[4, 40, 7] should be 7440"
 puts largest_arrangement([4, 40, 7]).to_s
-# [4, 46, 7] = 7464
+puts
+puts "[4, 46, 7] should be 7464"
 puts largest_arrangement([4, 46, 7]).to_s
-# [5, 2, 1, 9, 50, 56] = 95_655_021
+puts
+puts "[5, 2, 1, 9, 50, 56] should be 95655021"
 puts largest_arrangement([5, 2, 1, 9, 50, 56]).to_s
+puts
+puts "[] should be 'Empty Array'"
+puts largest_arrangement([]).to_s
+puts
+puts "[2, 3, 1, 9, -50] should be 'Only positive numbers are accepted'"
+puts largest_arrangement([2, 3, 1, 9, -50]).to_s
