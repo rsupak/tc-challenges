@@ -61,15 +61,15 @@ in order to run the tests individually:
 
 BubbleSort :  
 ```bash 
-bundle exec rspec bubble_sort_spec.rb
+bundle exec rspec spec/bubble_sort_spec.rb
 ```
 BucketSort :  
 ```bash
-bundle exec rspec bucket_sort_spec.rb
+bundle exec rspec spec/bucket_sort_spec.rb
 ```
 HeapSort :
 ```bash
-bundle exec rspec heap_sort_spec.rb
+bundle exec rspec spec/heap_sort_spec.rb
 ```
 ## Notes
 # Link to Demo Videos
