@@ -6,7 +6,6 @@ require 'pry'
 # sorted array at each comparison.
 
 def merge_sort(collection)
-  p collection
   return collection unless collection.size > 1
 
   mid = collection.size / 2
@@ -21,10 +20,5 @@ def merge(left, right)
   while [left, right].none?(&:empty?)
     sorted << (left[0] < right[0] ? left.shift : right.shift)
   end
-  p sorted + left + right
+  sorted + left + right
 end
-
-shuffled_array = [-20, 24, -17, -72, 58, -98, 48, 10, 59, 10]
-
-puts "Random Array: #{shuffled_array}"
-puts "Sorted Array: #{merge_sort(shuffled_array)}"
