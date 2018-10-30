@@ -1,7 +1,7 @@
 require_relative 'largest_arrangement'
 
 describe 'largest_arrangement' do
-  
+
   # tests if method will return largest number combination
   it 'returns the greatest value from the combine numbers of the array' do
     expect(largest_arrangement([4, 50, 8, 145])).to eq(8_504_145)
