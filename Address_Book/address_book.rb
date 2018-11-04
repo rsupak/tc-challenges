@@ -7,7 +7,9 @@ class AddressBook
     entries = {}
   end
 
-  def add_entry()
+  def add_entry
+    new_entry = Entry.new
+    
   end
 
 end
