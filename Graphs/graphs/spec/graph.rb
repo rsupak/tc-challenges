@@ -6,27 +6,50 @@ require 'matrix'
 # Graph implementation in Ruby
 class Graph
   attr_reader :vertices, :edges
-  def initialize(vertices, edges = EdgeSet.new)
+  def initialize(vertices, edges)
+    @vertices = vertices
+    @edges = edges
   end
 
+  # tests whether vertex exists in graph
   def vertex?(v)
+    vertices.include?(v)
   end
 
+  # tests whether edge exists in graph
   def edge?(e)
+    edges.edge?(e)
   end
 
+  # tests whether vertices form an edge in the graph
   def adjacent?(v1, v2)
+    edge?(Edge.new(v1, v2))
   end
 
+  # The following methods look at the connections made within
+  # the graph. They determine the minimum / maximum number of 
+  # connections owned by any vertex as well as the total
+  # connections found in the graph.
+
+  # returns total connections
   def degree
-    # Handshaking lemma (https://en.wikipedia.org/wiki/Handshaking_lemma)
+    get_degree_array.reduce(:+)
   end
 
-  # min degree
+  # returns minimum number of connections
   def min_degree
+    get_degree_array.min
   end
 
-  # max degree
+  # returns maximum number of connections
   def max_degree
+    get_degree_array.max
+  end
+
+  # helper method to calculate degrees in graph
+  def get_degree_array
+    arr = []
+    vertices.each { |v| arr << v.degree }
+    arr
   end
 end

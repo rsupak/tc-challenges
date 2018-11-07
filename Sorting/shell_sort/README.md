@@ -1,10 +1,14 @@
 # tcvc-data-structure-challenge
-Graphs
+Shell Sort
 
 ### Description
-A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as:
-A Graph consists of a finite set of vertices(or nodes) and set of Edges which connect a pair of nodes.
 
+Quicksort sorts items in an array in place by partitioning the array.
+around a pivot point. Items less than the pivot are returned to the left 
+of the pivot; items greater are returned to the right of the array.
+The left and right sides are then recursively partitioned the
+in a similar manner until the left and right sides are completely
+sorted. Once sorted, the method returns the sorted array.
 
 ## Prerequisites
 1. Ruby 2.5.x
@@ -39,10 +43,10 @@ all files to be tested should also be in the spec directory
 
 ## Running Tests
 ```bash
-bundle exec rspec spec/graph_spec.rb
+bundle exec rspec spec/shell_sort_spec.rb
 ```
 ## Notes
 
 # Link to Demo Videos
 Demo Video Link
-https://youtu.be/4_wKXRhrYFk
+
