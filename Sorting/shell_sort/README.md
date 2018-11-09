@@ -3,12 +3,13 @@ Shell Sort
 
 ### Description
 
-Quicksort sorts items in an array in place by partitioning the array.
-around a pivot point. Items less than the pivot are returned to the left 
-of the pivot; items greater are returned to the right of the array.
-The left and right sides are then recursively partitioned the
-in a similar manner until the left and right sides are completely
-sorted. Once sorted, the method returns the sorted array.
+Shell sort is a swap sort method similar to insertion sort.
+This method compares values that are a separated by a specified
+gap in the indices. The gap allows for the comparison
+of a smaller number of sub-arrays than insertion sort, and
+greatly decreases the overall iterations of each of those sub arrays,
+that said, shell sort also runs in O(n^2) time, but should show
+an improvement over much larger arrays than insertion sort.
 
 ## Prerequisites
 1. Ruby 2.5.x
@@ -49,4 +50,4 @@ bundle exec rspec spec/shell_sort_spec.rb
 
 # Link to Demo Videos
 Demo Video Link
-
+https://youtu.be/_ppnFlmne5E
