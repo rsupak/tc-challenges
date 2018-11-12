@@ -16,3 +16,6 @@ def quick_sort(array)
   [*quick_sort(left), pivot, *quick_sort(right)]
 end
 
+shuffled_array = Array.new(20) { rand(-1000...1000) }
+puts "Random Array: #{shuffled_array}"
+puts "Sorted Array: #{quick_sort(shuffled_array)}"
