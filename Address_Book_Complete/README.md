@@ -43,19 +43,22 @@ bundle exec rspec spec/graph_spec.rb
 ```
 ## Notes
 All supplemental files must be placed in the spec directory.
-The methods currently built to import CSVs look for all files 
-in the csv_files directory, so any additional CSV files should 
-also be placed in that directory.
+The methods currently built to import CSVs look for all files in the spec
+directory, so any additional CSV files should also be placed in the spec directory.
 
 *** To run MenuController.rb ***
 The nature of requiring user input for the menu screen interferes with
 the methods used by RSpec to test for values. So in order to use the
 UI, follow the instructions below. 
 
-1. Remove the comment '#' from lines 111 & 112 to run the program
+1. Remove the comment '#' from lines 50 & 51 to run the program
 
-2. Comment out lines 111 & 112 to run the test files
+2. Comment out lines 50 & 51 to run the test files
 
 # Link to Demo Videos
 Demo Video Links
-https://youtu.be/fBcZu8WoQJE
+Main Demo
+https://youtu.be/7EBVRrxKCoQ
+
+Supplemental Spec Demo
+https://youtu.be/4WxkyAGzsrU

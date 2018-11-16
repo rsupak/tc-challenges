@@ -24,10 +24,7 @@ class MenuController
       print 'Enter your selection: >> '
       choice = gets.to_i
       puts "Choice: #{choice}"
-      if choice == 5
-        puts 'Goodbye!'
-        break
-      end
+      break if choice == 5
 
       selection(choice)
     end
@@ -41,13 +38,9 @@ class MenuController
     when 2
       manual_add_entry
     when 3
-      puts 'Awaiting Build...'
-      hold_screen
-      # search_menu
+      search_menu
     when 4
-      puts 'Awaiting Build...'
-      hold_screen
-      # file_selection
+      file_selection
     end
   end
 
@@ -63,7 +56,6 @@ class MenuController
   end
 
   # manually adds entry into the address book
-  # validations are built into each entry method
   def manual_add_entry
     address_book.add_entry(enter_name, enter_phone, enter_email)
   end
@@ -98,6 +90,67 @@ class MenuController
     email
   end
 
+  # displays manual search options
+  def search_menu
+    puts 'Search by? '
+    puts '1 - Name'
+    puts '2 - Phone Number'
+    puts '3 - Email'
+    print 'Enter your selection: >> '
+    choice = gets.to_i
+    search_selection(choice)
+  end
+
+  def search_selection(choice)
+    case choice
+    when 1
+      display_by_name
+    when 2
+      display_by_phone
+    when 3
+      display_by_email
+    end
+  end
+
+  def display_by_name
+    name = enter_name
+    puts 'Entry Not Found' unless address_book.search_by_name(name)
+    address_book.entries.each do |entry|
+      entry.display_entry if entry.name == name
+    end
+    puts
+    hold_screen
+  end
+
+  def display_by_phone
+    phone = enter_phone
+    puts 'Entry Not Found' unless address_book.search_by_phone(phone)
+    address_book.entries.each do |entry|
+      entry.display_entry if entry.phone == phone
+    end
+    puts
+    hold_screen
+  end
+
+  def display_by_email
+    email = enter_email
+    puts 'Entry Not Found' unless address_book.search_by_email(email)
+    address_book.entries.each do |entry|
+      entry.display_entry if entry.email == email
+    end
+    puts
+    hold_screen
+  end
+
+  # helper method to get manual import data
+  def file_selection
+    print 'Enter filename: >> '
+    imports = gets.chomp
+    count = address_book.import_file(".\/csv_files\/#{imports}")
+    puts "#{count} Entries Imported"
+    hold_screen
+  end
+
   # helper method to display 1 entry at a time
   def hold_screen
     print 'Press Enter to continue.'
@@ -108,5 +161,5 @@ end
 ## UNCOMMENT THE LINES BELOW TO RUN MENU ##
 ## COMMENT THEM OUT TO RUN THE TEST ##
 
-# session = MenuController.new
-# session.display
+session = MenuController.new
+session.display
