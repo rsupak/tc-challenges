@@ -1,24 +1,71 @@
-# Set Min an Max Run Size
-MIN = 3
-MAX = 32
+# Hybrid sort method that takes advantage of the time complexity advantages
+# inherent in the insertion and merge sort algorithms. For smaller sub-arrays
+# insertion sort offers the most efficient sorting method, however, once the
+# sub-arrays grow larger than 64 items, insertion sort becomes less efficient
+# than merge sort. At this point merge sort takes over and completes the sort
+# of the remaining sub-arrays. This efficiency relies on comparable sub-array
+# sizes. Finally, as the smaller arrays are being structured from the original
+# array into runs, The algorithm looks for natural ordered runs already present
+# in the original array, and builds runs utilizing these natural ordered runs
+# which will reduce the overall number of calls to the insertion sort method.
 
-# tim_sort
+MIN_RUN = 4
+
 def tim_sort(array)
-  runs, sorted_runs = [], []
-  
+  runs, new_run = [],[]
+  length = array.length
+
+  (0...length).each do |i|
+    new_run << array[i]
+    if i == length - 1
+      runs << insertion_sort(new_run)
+      new_run = []
+    end
+    next if new_run.length < 2
+
+    decrements = new_run[0] > new_run[1]
+    decrements ? decremental_sort(new_run) : incremental_sort(new_run)
+    unless new_run.length <= MIN_RUN
+      runs << (decrements ? new_run.reverse : new_run)
+      new_run = []
+    end
+  end
+
+  sort_runs(runs)
 end
 
-# used to combine sorted Runs
-def merge_sort(collection)
-  return collection unless collection.size > 1
-
-  mid = collection.size / 2
-  left, right = merge_sort(collection[0...mid]), merge_sort(collection[mid..-1])
-
-  merge(left, right)
+# helper method places aberrant addition to decrementing array
+# in correct order using binary insertion sort
+def decremental_sort(new_run)
+  if new_run[-2] < new_run[-1]
+    elem = new_run.pop
+    insert_at = new_run.bsearch_index { |i| i < elem }
+    new_run.insert(insert_at, elem)
+  end
+  new_run
 end
 
-# helper method to combine the left and right arrays in sorted order
+# helper method places abberant addition to incrementing array
+# in correct order using binary insertion sort
+def incremental_sort(new_run)
+  if new_run[-2] > new_run[-1]
+    elem = new_run.pop
+    insert_at = new_run.bsearch_index { |i| i > elem }
+    new_run.insert(insert_at, elem)
+  end
+  new_run
+end
+
+# Merges each run into sorted order
+def sort_runs(runs)
+  sorted_array = []
+  runs.each do |run|
+    sorted_array = merge(sorted_array, run)
+  end
+  sorted_array
+end
+
+# helper method to combine the runs into the final sorted array.
 def merge(left, right)
   sorted = []
   while [left, right].none?(&:empty?)
@@ -27,11 +74,12 @@ def merge(left, right)
   sorted + left + right
 end
 
-# merges sub-array <= size of Run
+# Sorts smaller arrays that contains the last item in the original array.
+# Insertion sort is used here because the final array may only contain
+# one or two items
 def insertion_sort(array)
   array.each_index do |index|
     key = array[index]
-
     check = index - 1
     while check >= 0 && key < array[check]
       array[check], array[check + 1] = array[check + 1], array[check]
@@ -41,7 +89,6 @@ def insertion_sort(array)
   array
 end
 
-shuffled_array = Array.new(10) { rand(-100...100) }
-
-puts "Random Array: #{shuffled_array}"
-puts "Sorted Array: #{insertion_sort(shuffled_array)}"
+# shuffled_array = Array.new(32) { rand(-100...100) }
+# puts "Random Array: #{shuffled_array}"
+# puts "Sorted Array: #{tim_sort(shuffled_array)}"

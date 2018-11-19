@@ -3,6 +3,16 @@ TimSort
 
 ### Description
 
+Hybrid sort method that takes advantage of the time complexity advantages
+inherent in the insertion and merge sort algorithms. For smaller sub-arrays
+insertion sort offers the most efficient sorting method, however, once the 
+sub-arrays grow larger than 64 items, insertion sort becomes less efficient
+than merge sort. At this point merge sort takes over and completes the sort
+of the remaining sub-arrays. This efficiency relies on comparable sub-array
+sizes. Finally, as the smaller arrays are being structured from the original
+array into runs, The algorithm looks for natural ordered runs already present 
+in the original array, and builds runs utilizing these natural ordered runs
+which will reduce the overall number of calls to the insertion sort method.
 
 
 ## Prerequisites
@@ -45,3 +55,4 @@ bundle exec rspec spec/tim_sort_spec.rb
 # Link to Demo Videos
 Demo Video Link
 
+https://youtu.be/fsngWDdklqw
