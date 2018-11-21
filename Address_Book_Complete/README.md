@@ -39,7 +39,7 @@ all files to be tested should also be in the spec directory
 
 ## Running Tests
 ```bash
-bundle exec rspec spec/graph_spec.rb
+bundle exec rspec
 ```
 ## Notes
 All supplemental files must be placed in the spec directory.
@@ -57,8 +57,4 @@ UI, follow the instructions below.
 
 # Link to Demo Videos
 Demo Video Links
-Main Demo
-https://youtu.be/7EBVRrxKCoQ
 
-Supplemental Spec Demo
-https://youtu.be/4WxkyAGzsrU

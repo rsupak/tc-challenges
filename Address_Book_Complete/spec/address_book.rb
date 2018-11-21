@@ -1,10 +1,10 @@
 require 'uri'
 require_relative 'entry'
-VALID_PHONE_NUMBER_REGEX = /^\(?[\d]{3}\)?[-][\d]{3}[-][\d]{4}$/
+VALID_PHONE_NUMBER_REGEX = /^[\d]{3}[-][\d]{3}[-][\d]{4}$/
 
 # Address book gathers and holds entry data
 class AddressBook
-  attr_accessor :entries, :menu
+  attr_accessor :entries, :menu # delete menu?
 
   def initialize
     @entries = []
@@ -22,20 +22,22 @@ class AddressBook
     false
   end
 
+  # find entry by phone
   def search_by_phone(phone)
     entries.each { |entry| return true if entry.phone == phone }
     false
   end
 
+  # find entry by email
   def search_by_email(email)
     entries.each { |entry| return true if entry.email == email }
     false
   end
 
   # import CSV file with entries
-  def import_file(file)
+  def import_file(file_path)
     count = 0
-    File.open(file).each do |line|
+    File.open(file_path).each do |line|
       line_info = line.split(',')
       add_entry(line_info[0], line_info[1], line_info[2].strip)
       count += 1
