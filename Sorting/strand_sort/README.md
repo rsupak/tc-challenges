@@ -3,6 +3,13 @@ Strand Sort
 
 ### Description
 
+Strand sort is a merge sort variant that builds strands of sorted subarrays
+then merges the strand into the main sorted sub array. The strands are build
+by setting the initial comparison value as the first item in the array,
+then it iterates over the array until it finds a number greater than the
+value then adds the value to the strand array sets the value to the found
+number. It continues build the strand with greater values until the end of
+the array. Then it merges the strand into the sorted final array.
 
 ## Prerequisites
 1. Ruby 2.5.x
@@ -44,3 +51,4 @@ bundle exec rspec spec/strand_sort_spec.rb
 # Link to Demo Videos
 Demo Video Link
 
+https://youtu.be/P2aRCOC5UlY

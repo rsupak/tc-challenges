@@ -1,6 +1,6 @@
 require 'uri'
 require_relative 'entry'
-VALID_PHONE_NUMBER_REGEX = /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/
+VALID_PHONE_NUMBER_REGEX = /^\(?[\d]{3}\)?[-][\d]{3}[-][\d]{4}$/
 
 # Address book gathers and holds entry data
 class AddressBook

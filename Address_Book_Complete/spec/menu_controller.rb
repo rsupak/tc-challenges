@@ -24,7 +24,10 @@ class MenuController
       print 'Enter your selection: >> '
       choice = gets.to_i
       puts "Choice: #{choice}"
-      break if choice == 5
+      if choice == 5
+        puts 'Goodbye!'
+        break
+      end
 
       selection(choice)
     end
@@ -49,7 +52,7 @@ class MenuController
   def view_entries
     address_book.entries.each do |entry|
       system 'clear'
-      entry.display_entry
+      puts entry.display_entry
       puts
       hold_screen
     end
@@ -65,7 +68,7 @@ class MenuController
     name = ''
     while name.empty?
       print 'Enter a valid name <first_name> <last_name>: >> '
-      name = gets.chomp
+      name = gets.chomp.capitalize
     end
     name
   end
@@ -101,6 +104,7 @@ class MenuController
     search_selection(choice)
   end
 
+  # displays search entry by defined user selection
   def search_selection(choice)
     case choice
     when 1
@@ -112,37 +116,43 @@ class MenuController
     end
   end
 
+  # helper method for manual search (search by name)
   def display_by_name
     name = enter_name
-    puts 'Entry Not Found' unless address_book.search_by_name(name)
+    unless address_book.search_by_name(name)
+      puts "There is no #{name} in your address book."
+    end
     address_book.entries.each do |entry|
-      entry.display_entry if entry.name == name
+      puts entry.display_entry if entry.name == name
     end
     puts
     hold_screen
   end
 
+  # helper method for manual search (search by phone)
   def display_by_phone
     phone = enter_phone
-    puts 'Entry Not Found' unless address_book.search_by_phone(phone)
+    puts "Phone Number Not Found" unless address_book.search_by_phone(phone)
     address_book.entries.each do |entry|
-      entry.display_entry if entry.phone == phone
+      puts entry.display_entry if entry.phone == phone
     end
     puts
     hold_screen
   end
 
+  # helper method for manual search (search by email)
   def display_by_email
     email = enter_email
-    puts 'Entry Not Found' unless address_book.search_by_email(email)
+    puts "Email Address Not Found" unless address_book.search_by_email(email)
     address_book.entries.each do |entry|
-      entry.display_entry if entry.email == email
+      puts entry.display_entry if entry.email == email
     end
     puts
     hold_screen
   end
 
   # helper method to get manual import data
+  # all csv files should be located in the csv_files directory
   def file_selection
     print 'Enter filename: >> '
     imports = gets.chomp

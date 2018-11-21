@@ -10,8 +10,6 @@ class Entry
 
   # display entry information
   def display_entry
-    puts "Name: #{name}"
-    puts "Phone: #{phone}"
-    puts "Email: #{email}"
+    "Name: #{name}\nPhone: #{phone}\nEmail: #{email}"
   end
 end

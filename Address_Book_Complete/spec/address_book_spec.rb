@@ -35,4 +35,24 @@ RSpec.describe AddressBook do
       expect(book.search_by_email('tim@Spartan.com')).to eq(true)
     end
   end
+
+  context 'should add entries to address book from CSV file' do
+    it 'should update the address book size' do
+      book.import_file(".\/csv_files\/addresses.csv")
+      expect(book.size).to eq 5
+    end
+    it 'should find imported entry' do
+      book.import_file(".\/csv_files\/addresses.csv")
+      expect(book.search_by_name('Bill')).to eq(true)
+    end
+    it 'should display found entry' do
+      book.import_file(".\/csv_files\/addresses.csv")
+      found = nil
+      book.entries.each do |entry|
+        found = entry if entry.name == 'Bill'
+      end
+      check = found.display_entry
+      expect(check).to eq("Name: Bill\nPhone: 555-555-4854\nEmail: bill@example.com")
+    end
+  end
 end
