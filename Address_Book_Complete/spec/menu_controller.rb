@@ -156,9 +156,16 @@ class MenuController
   def file_selection
     print 'Enter filename: >> '
     imports = gets.chomp
-    count = address_book.import_file(".\/csv_files\/#{imports}")
-    puts "#{count} Entries Imported"
-    hold_screen
+    path = imports == '' ? file_selection : ".\/csv_files\/#{imports}"
+    if Pathname(path).exist?
+      count = address_book.import_file(path)
+      puts "#{count} Entries Imported"
+      hold_screen
+    else
+      puts 'File not found'
+      hold_screen
+      file_selection
+    end
   end
 
   # helper method to display 1 entry at a time

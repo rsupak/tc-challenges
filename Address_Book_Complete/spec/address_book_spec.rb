@@ -38,15 +38,15 @@ RSpec.describe AddressBook do
 
   context 'should add entries to address book from CSV file' do
     it 'should update the address book size' do
-      book.import_file(".\/csv_files\/addresses.csv")
+      book.import_file(".\/csv_files\/entries.csv")
       expect(book.size).to eq 5
     end
     it 'should find imported entry' do
-      book.import_file(".\/csv_files\/addresses.csv")
+      book.import_file(".\/csv_files\/entries.csv")
       expect(book.search_by_name('Bill')).to eq(true)
     end
     it 'should display found entry' do
-      book.import_file(".\/csv_files\/addresses.csv")
+      book.import_file(".\/csv_files\/entries.csv")
       found = nil
       book.entries.each do |entry|
         found = entry if entry.name == 'Bill'
