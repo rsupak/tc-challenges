@@ -8,7 +8,7 @@
 # in situations where the variation in keys is not significantly greater than
 # the number of items. Counting sort's worst time complexity is O(n^2).
 
-def counting_sort(input) # [1,4,1,5,7,2,7,9]
+def counting_sort(input)
   return input if input.empty?
 
   min, max = input.minmax

@@ -1,0 +1,41 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.4.2
+  Exclude:
+    - log/*
+    - tmp/*
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+    - '**/vendor/**/.*'
+    - '**/node_modules/**/*'
+
+Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/LineLength:
+  Max: 120
+  IgnoredPatterns: ['\A#']
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - db/migrate/*
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
