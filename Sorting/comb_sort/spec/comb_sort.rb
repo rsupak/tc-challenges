@@ -10,12 +10,9 @@ def comb_sort(array)
   gap = array.size
   swaps = true
   while gap > 1 || swaps
-    p array
-    gap = [1, (gap / 1.247330950103979).to_i].max
+    gap = [1, (gap / 1.25).to_i].max
     swaps = false
     0.upto(array.size - gap - 1) do |i|
-      puts "Gap: #{gap} Index1: #{i} Index2: #{i + gap}"
-      p array
       if array[i] > array[i + gap]
         array[i], array[i + gap] = array[i + gap], array[i]
         swaps = true
@@ -24,8 +21,3 @@ def comb_sort(array)
   end
   array
 end
-
-shuffled_array = Array.new(10) { rand(-100...100) }
-
-puts "Random Array: #{shuffled_array}"
-puts "Sorted Array: #{comb_sort(shuffled_array)}"

@@ -1,13 +1,6 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 
 git_source(:github) { |_repo_name| "https://github.com/#{repo_name}" }
-
-# ruby '2.4.2'
-
-gem 'sequel' # database ORM
-gem 'sqlite3' # database
 
 group :development, :test do
   gem 'pry' # debugging
