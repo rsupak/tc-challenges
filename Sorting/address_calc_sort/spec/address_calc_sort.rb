@@ -23,14 +23,7 @@ def address_calc_sort(array)
     address_table[address].insert(num)
   end
 
-  # ***delete before submit!***
-  # print address table
-  address_table.each.with_index do |list, i|
-    next if list.head.nil?
-    print 'Address ' + i.to_s + ': '
-    list.print_list
-    puts
-  end
+  print_table(address_table)
 
   # replace values in array with values from the address_table
   # each address is exhausted before moving on to the next,
@@ -47,6 +40,18 @@ def address_calc_sort(array)
     end
   end
   temp
+end
+
+def print_table(table)
+  # ***delete before submit!***
+  # print address table
+  table.each.with_index do |list, i|
+    next if list.head.nil?
+
+    print 'Address ' + i.to_s + ': '
+    list.print_list
+    puts
+  end
 end
 
 # hash function returns an address for the number to be placed in the hash table
