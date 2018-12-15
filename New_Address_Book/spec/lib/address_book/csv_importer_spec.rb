@@ -56,5 +56,32 @@ RSpec.describe AddressBook::CsvImporter do
           .to raise_exception(AddressBook::CsvInvalidError)
       end
     end
+
+    context 'with an invalid name field' do
+      let(:file_path) { './spec/csv_files/entries_invalid_name.csv' }
+      let(:importer) { described_class.new(database, file_path) }
+
+      it 'raises a NameField error' do
+        expect { importer.import }.to raise_exception(AddressBook::NameFieldError)
+      end
+    end
+
+    context 'with an invalid phone number field' do
+      let(:file_path) { './spec/csv_files/entries_invalid_phone.csv' }
+      let(:importer) { described_class.new(database, file_path) }
+
+      it 'raises a PhoneNumberField error' do
+        expect { importer.import }.to raise_exception(AddressBook::PhoneNumberFieldError)
+      end
+    end
+
+    context 'with an invalid email field' do
+      let(:file_path) { './spec/csv_files/entries_invalid_email.csv' }
+      let(:importer) { described_class.new(database, file_path) }
+
+      it 'raises a EmailField error' do
+        expect { importer.import }.to raise_exception(AddressBook::EmailFieldError)
+      end
+    end
   end
 end

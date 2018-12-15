@@ -19,12 +19,20 @@ RSpec.describe AddressBook::Menu do
       expect(menu.validate_phone_number('555')).to eq(false)
     end
 
+    it 'expects phone number format to be ###-###-####' do
+      expect(menu.validate_phone_number('5555555555')).to eq(false)
+    end
+
     it 'allows a valid phone number format' do
       expect(menu.validate_phone_number('555-555-5555')).to eq(true)
     end
 
-    it 'expects email formate to be local-part@domain' do
+    it 'expects email format to be local-part@domain' do
       expect(menu.validate_email('abc')).to eq(false)
+    end
+
+    it 'expects email format to be local-part@domain' do
+      expect(menu.validate_email('abc.test.com')).to eq(false)
     end
 
     it 'allows a valid email address' do

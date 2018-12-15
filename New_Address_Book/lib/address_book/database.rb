@@ -9,7 +9,6 @@ module AddressBook
     def initialize
       @db = Sequel.connect('sqlite://./lib/databases/test.db')
 
-      # @db.drop_table?(:entries)
       @db.create_table? :entries do
         primary_key :id
         index String :name, unique: true, null: false

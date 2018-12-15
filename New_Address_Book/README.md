@@ -81,7 +81,7 @@ This will also create the `./lib/databases/test.db` file if the file does not al
 If it exists, this will connect the database to the menu.
 
 ## Running the tests
-RSpec is used to run tests located in the `spec/lib` directory. To run all tests, use:
+RSpec is used to run tests located in the `./spec/lib` directory. To run all tests, use:
 
 ```bash
 bundle exec rspec
@@ -128,3 +128,4 @@ The CSV files for running the code and testing are located in the `./spec/csv_fi
 
 # Link to Demo Videos
 Demo Video Link
+https://youtu.be/iWN5QXt6uxw

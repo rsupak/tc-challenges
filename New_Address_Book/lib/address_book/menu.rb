@@ -1,6 +1,7 @@
 module AddressBook
   require 'uri'
   VALID_PHONE_NUMBER_REGEX = /^[\d]{3}[-][\d]{3}[-][\d]{4}$/
+  
   # This class prints the options menu, reads user input, and calls the
   # appropriate function for each option.
   class Menu
@@ -166,7 +167,7 @@ module AddressBook
     def file_selection
       puts 'Which file would you like to import?'
       imports = gets.chomp
-      file_path = "spec/csv_files/#{imports}"
+      file_path = "#{imports}"
       CsvImporter.new(@database, file_path).import
       puts 'Import complete.'
       hold_screen
@@ -202,6 +203,8 @@ module AddressBook
     def enter_name
       name = ''
       until validate_name(name)
+        system 'clear'
+        puts "Name field cannot be empty."
         print 'Enter a valid name: >> '
         name = gets.chomp.capitalize
       end
@@ -212,6 +215,7 @@ module AddressBook
     def enter_phone
       phone = ''
       until validate_phone_number(phone)
+        system 'clear'
         print 'Enter a valid phone number ###-###-####: >> '
         phone = gets.chomp
       end
@@ -222,6 +226,7 @@ module AddressBook
     def enter_email
       email = ''
       until validate_email(email)
+        system 'clear'
         print 'Enter a valid email address: >> '
         email = gets.chomp
       end
