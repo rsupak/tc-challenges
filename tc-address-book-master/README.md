@@ -2,7 +2,7 @@
 
 ## Tech Stack
 * Ruby 2.4.2
-* Database: SQLite 3 in memory database.
+* Database: SQLite 3 DB 'test.db'.
     * ORM: Sequelize gem
 * Testing: RSpec
 * Linting/formatting: Rubocop gem
@@ -70,4 +70,4 @@ The `AddressBook::CsvImporter` class reads a file specified by the user and inse
 exists, and if so,  updates the row by inserting a new row and deleting the old one. This class also validates that 
 the CSV header  contains all the required fields.
 
-The CSV files for running the code and testing are located in the `./spec/fixtures` directory.
+The CSV files for running the code and testing are located in the `./spec/csv_files` directory.
