@@ -2,7 +2,7 @@
 
 
 ## Stack and Queue
-Tech Stack: Ruby
+### Tech Stack: Ruby
 
 Challenge Overview
 This is the first in a series of challenges of learning basic computer science data structures in ruby. In the first step to 
@@ -14,7 +14,7 @@ and test file
 
 
 ## Linked List
-Tech Stack: Ruby
+### Tech Stack: Ruby
 
 Challenge Overview
 This is the second in a series of challenges of learning basic computer science data structures in ruby. In the second step to 
@@ -27,7 +27,7 @@ file will be exactly the same except the values for the nodes will be different.
 
 
 ## Hash Table Part 1 - Chaining
-Tech Stack: Ruby
+### Tech Stack: Ruby
 
 Challenge Overview
 This is the third in a series of challenges of learning computer science data structures in ruby. In the 3rd step to this 
@@ -40,7 +40,7 @@ be exactly the same except the values for the nodes will be different.
 
 
 ## Hash Table Part 2 - Open Addressing
-Tech Stack: Ruby
+### Tech Stack: Ruby
 
 Challenge Overview
 This is the third in a series of challenges of learning computer science data structures in ruby. In the 4th step to this 
@@ -51,7 +51,7 @@ the skeleton starter file and rspec test file in the forum. There will be a blin
 
 
 ## Command Line Address Book Part 4: Edge Cases
-Tech Stack: Ruby, SQLite3
+### Tech Stack: Ruby, SQLite3
 
 This is the fourth challenge in a series of challenges of building a command line application called address book. We will learn how to build an app the correct way by using Test Driven Development. You should build the test file first and then the function after. In this challenge we will be covering some edge cases and building a database for the application.
 
@@ -77,8 +77,8 @@ Enter your selection:
 The code base is written in Ruby. If can pick your own stack if you would like but you will have to build a command line app where all the functions from Main Menu above will work. You will only be judged on the 6 edge cases that you come up with. Tests for this challenge are only required for the edge cases. 
 
 
-##Pigeonhole Sort
-Tech Stack: Ruby
+## Pigeonhole Sort
+### Tech Stack: Ruby
 
 This is a part in a series of challenges to learn sorting algorithms in ruby. In this challenge, we will create methods to sort an array using pigeonhole sort. You must complete all of the methods (provided) and get all the test in the Rspec file to pass (also provided). You can complete the task by making as many or as little methods or classes in the address_calc_sort.rb file. The sorting algorithms must possess the qualities of the algorithm listed. An example is you can copy and paste a bubble sort into the pigeonhole_sort.rb file and the test will pass but you will fail the challenge.
 
@@ -100,8 +100,8 @@ Comparison with Counting Sort :
 It is similar to counting sort, but differs in that it “moves items twice: once to the bucket array and again to the final destination “.
 
 
-##Snail Sort
-Tech Stack: Ruby
+## Snail Sort
+### Tech Stack: Ruby
 
 Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
 
@@ -131,7 +131,7 @@ test( [[1,2,3,1],[4,5,6,4],[7,8,9,7],[7,8,9,7] , [1,2,3,1,4,7,7,9,8,7,7,4,5,6,9,
 
 
 ## Dijkstra's Graph
-Tech Stack: Ruby
+### Tech Stack: Ruby
 This is the fifth in a series of challenges of learning computer science data structures in ruby. In the 5th step to this challenge is you will create methods to build a dijkstras graph. You must get all the test in the Rspec file to pass. The rspec test file is in the forum. You can build the graph anyway you like as long as all of the test in the Rspec file pass. There will be a blind test file to prevent cheating. The blind test file will be exactly the same except the values for the nodes will be different.
 
 ## Address Calculation Sort
