@@ -2,12 +2,13 @@
 # take an elementary look at his shortest path problem
 class Graph
   attr_accessor :adjacency_matrix, :distance, :graph
-  attr_accessor :nodes, :previous, :total_nodes
+  attr_accessor :nodes, :previous, :total_nodes, :final_destinations
 
   def initialize(total_nodes)
     @total_nodes = total_nodes
     @graph = {}
     @nodes = []
+    @final_destinations = []
     @index_in_matrix = 0
     @adjacency_matrix = Array.new(@total_nodes) { Array.new(@total_nodes) }
   end
@@ -15,11 +16,12 @@ class Graph
   # adds node to the graph by taking a name parameter, checking if the new node
   # fits into the determined graph size, the node to the nodes array along with
   # an incremented index value.
-  def add_node(name)
+  def add_node(name, end_point)
     return if @index_in_matrix >= total_nodes
 
-    node = { name: name, index_in_matrix: @index_in_matrix }
+    node = { name: name, index_in_matrix: @index_in_matrix, end_point: end_point }
     nodes << node
+    final_destinations << node if node[:end_point] == true
     @adjacency_matrix[@index_in_matrix][@index_in_matrix] = 0
     @index_in_matrix += 1
     node
@@ -121,22 +123,31 @@ class Graph
     dijkstra(name1)
     @distance[name2].nil? ? Float::INFINITY : @distance[name2]
   end
+
+  def get_cheapest_cost(name1)
+    total_costs = []
+    @final_destinations.each do |node|
+      name2 = node[:name]
+      total_costs << find_shortest_path(name1, name2)
+    end
+    total_costs.min
+  end
 end
 
 # test code
 graph = Graph.new(26)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
-graph.add_node("D")
-graph.add_node("E")
-graph.add_node("F")
-graph.add_node("G")
-graph.add_node("H")
-graph.add_node("I")
-graph.add_node("J")
-graph.add_node("K")
-graph.add_node("L")
+graph.add_node("A", false)
+graph.add_node("B", false)
+graph.add_node("C", false)
+graph.add_node("D", false)
+graph.add_node("E", true)
+graph.add_node("F", false)
+graph.add_node("G", false)
+graph.add_node("H", true)
+graph.add_node("I", true)
+graph.add_node("J", false)
+graph.add_node("K", true)
+graph.add_node("L", true)
 
 graph.add_edge("A", "B", 5)
 graph.add_edge("A", "C", 3)
@@ -149,9 +160,5 @@ graph.add_edge("D", "I", 11)
 graph.add_edge("F", "J", 1)
 graph.add_edge("G", "K", 10)
 graph.add_edge("J", "L", 1)
-# pp graph.adjacency_matrix
-graph.dijkstra('A')
-p graph.distance
-p graph.previous
-# p graph.find_shortest_path('A', 'F')
-# p graph.find_shortest_path('A', 'G')
+
+p graph.get_cheapest_cost("A")

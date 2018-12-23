@@ -1,0 +1,2 @@
+class AgeVerificationController < ApplicationController
+end

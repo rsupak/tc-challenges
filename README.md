@@ -1,4 +1,4 @@
-# topcoder challenges
+# TopCoder Challenges
 
 
 ## Stack and Queue
