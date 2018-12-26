@@ -1,4 +1,9 @@
-# calculates bowling scores with bonuses
+# Bowling score scores a round of ten-pin bowling. A point is earned for
+# each pin knocked down, and registers bonus points for strikes and spares.
+# Strike earn 10 points, plus the next two rolls, spares earn 10 points, plus
+# the next roll. A perfect game (all strikes) earns 300 points total. A bowler
+# may make a third roll in frame 10 if the first roll is a strike or the second
+# roll is a spare.
 def bowling_score(scores)
   scores = scores.split(' ')
   scores = scores.map { |score| score.split('') }
@@ -18,7 +23,7 @@ def bowling_score(scores)
   opens + strikes + spares + nine + ten
 end
 
-# helper method to identify indices of strikes and spares within the scores
+# identifies indices of strikes and spares within the scores
 def locate_strikes_and_spares(scores)
   spare_locs = []
   strike_locs = []
@@ -29,7 +34,7 @@ def locate_strikes_and_spares(scores)
   [strike_locs, spare_locs]
 end
 
-# helper method to score open frames (frames without strikes or spares)
+# returns score of open frames (frames without strikes or spares)
 # only scores frames 1 - 8
 def score_open_frames(scores)
   score = 0
@@ -41,7 +46,7 @@ def score_open_frames(scores)
   score
 end
 
-# helper method used to score spares in frames 1 - 8
+# scores spares in frames 1 - 8
 # returns 20 if next roll is a strike, else returns 10 + the next roll
 def score_spares(scores, spare_locs)
   score = 0
