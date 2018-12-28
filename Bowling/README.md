@@ -58,6 +58,13 @@ bundle exec rspec spec/bowling_score_spec.rb
 
 ## Notes
 
+I found a bug when scoring the unfinished game terminating in either a spare
+or a strike after making them Demo Video. I added 2 additional tests and corrected 
+the bug. It will now score a game up to the last spare or strike in the middle of 
+a game and return the running score (minus the ten for that round) similar to an 
+automated scoring device at a modern bowling alley.
+
 # Link to Demo Videos
 
 Demo Video Link
+https://youtu.be/_ywWW5WWqrI

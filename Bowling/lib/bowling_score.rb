@@ -51,6 +51,10 @@ end
 def score_spares(scores, spare_locs)
   score = 0
   spare_locs.each do |loc|
+    # does not add score for last spare if spare is not followed by
+    # a bonus roll
+    next if scores[loc + 1].nil?
+
     score += (scores[loc + 1][0] == 'X' ? 20 : 10 + scores[loc + 1][0].to_i)
   end
   score
@@ -66,6 +70,9 @@ def score_strikes(scores, strike_locs)
 
   strike_locs.each do |loc|
     next unless loc <= 8
+    # does not add score for a strike frame if the last strike is not followed
+    # by 2 rolls (bonus cannot be calculated yet)
+    next if scores.length < 10 && scores.last[0] == 'X'
 
     # 3 strikes
     score += 30 if scores[loc + 1][0] == 'X' && scores[loc + 2][0] == 'X'
@@ -116,7 +123,7 @@ end
 
 def score_frame_10(frame)
   # Open frame
-  return frame[0].to_i + frame[1].to_i if frame.length == 2
+  return frame.map(&:to_i).sum if frame.length == 2
   # X X X
   return 30 if frame[1] == 'X' && frame[2] == 'X'
   # X X <0-9>
@@ -130,6 +137,3 @@ def score_frame_10(frame)
   # <0-9> / <0-9>
   return 10 + frame[2].to_i if frame[1] == '/' && frame[2] != 'X'
 end
-
-scores = '3/ 14 35 X 34 45 X 70 03 X3/'
-p bowling_score(scores)
