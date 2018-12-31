@@ -1,0 +1,8 @@
+<div class="jumbotron mt-3 text-center"><h2>Welcome to MyAddressBook!</h2>
+  <h3 class="text-center">Main Menu - <%= Entry.all.count %> entries</h3>
+  <p class="text-center"><%= link_to 'View all entries', controller: 'entries' %></p>
+  <p class="text-center"><%= link_to 'Create an entry', new_entry_path %></p>
+  <p class="text-center">Search for an entry</p>
+  <p class="text-center">Import entries from a CSV</p>
+  <p class="text-center">Exit</p>
+</div>

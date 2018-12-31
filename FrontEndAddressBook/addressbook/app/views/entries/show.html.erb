@@ -1,0 +1,23 @@
+<div class="card bg-light mb-3" style="max-width: 30rem;">
+  <div class="card-header text-center"><strong>
+  <%= @entry.lastname.capitalize%>
+  </strong></div>
+  <div class="card-body">
+    <p><strong>Name: </strong>
+      <%= @entry.firstname.capitalize + ' ' + @entry.lastname.capitalize %>
+    </p>
+    <p class="card-text"><strong>Phone: </strong>
+      <%= @entry.phone[0..2]+'-'+@entry.phone[3..5]+'-'+@entry.phone[6..9] %>
+    </p>
+    <p><strong>Email: </strong>
+      <%= @entry.email %>
+    </p>
+  </div>
+  <div class="card-footer text-muted text-center">
+    <%= link_to 'Edit', edit_entry_path%> |
+    <%= link_to 'Back', entries_path %>
+  </div>
+</div>
+<p class="text-center" style="max-width: 30rem;">
+  <%= link_to 'Main Menu', controller: 'welcome' %>
+</p>
