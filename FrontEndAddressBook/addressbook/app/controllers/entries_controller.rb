@@ -1,19 +1,17 @@
 class EntriesController < ApplicationController
+  before_action :find_id, only: %i[show update destroy edit]
+
   def index
     @entries = Entry.all
   end
 
-  def show
-    @entry = Entry.find(params[:id])
-  end
+  def show; end
 
   def new
     @entry = Entry.new
   end
 
-  def edit
-    @entry = Entry.find(params[:id])
-  end
+  def edit; end
 
   def create
     @entry = Entry.new(entry_params)
@@ -21,13 +19,11 @@ class EntriesController < ApplicationController
     if @entry.save
       redirect_to @entry
     else
-      render 'new'
+      render :new
     end
   end
 
   def update
-    @entry = Entry.find(params[:id])
-
     if @entry.update(entry_params)
       redirect_to @entry
     else
@@ -36,13 +32,21 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    @entry = Entry.find(params[:id])
     @entry.destroy
 
     redirect_to entries_path
   end
 
+  def import
+    Entry.import(params[:file])
+    redirect_to root_url, success: "Entries Imported!"
+  end
+
   private
+
+  def find_id
+    @entry = Entry.find(params[:id])
+  end
 
   def entry_params
     params.require(:entry).permit(:firstname, :lastname, :phone, :email)

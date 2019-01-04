@@ -1,9 +1,8 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h2>New Entry</h2>
+<div class="container" id="form_container">
+  <h5>New Entry</h5>
 
-    <%= render 'form' %>
+  <%= render 'form' %>
 
-    <%= link_to 'Back', entries_path %>
-  </div>
+  <%= link_to 'Main', root_url,
+            class: 'btn btn-outline-info' %>
 </div>

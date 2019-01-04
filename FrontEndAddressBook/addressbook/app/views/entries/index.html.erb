@@ -1,19 +1,41 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h5 class="col-sm ml-3"><strong>Name</strong></h5>
-    <% @entries.each do |entry| %>
-      <div class="row mt-3 ml-3" style="max-width: 30rem;">
-        <div class="col-6"><%= entry.firstname.capitalize + ' ' + entry.lastname.capitalize %></div>
-        <div class="col-auto"><%= link_to 'Show', entry_path(entry) %></div>
-        <div class="col-auto"><%= link_to 'Edit', edit_entry_path(entry) %></div>
-        <div class="col-auto"><%= link_to 'Delete', entry_path(entry),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="media ml-3">
+      <div class="media-body">
+      <% if Entry.all.count.zero? %>
+          <h4>No Entries Exist</h4>
+      <% else %>
+        <h4>All Entries</h4>
+      <% end %>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <% @entries.each do |entry| %>
+              <tr>
+                <td><strong><%= "#{entry.lastname.capitalize}, #{entry.firstname.capitalize}" %><strong></td>
+                <td>     </td>
+                <td><%= link_to 'Show', entry_url(entry),
+                      class: 'btn btn-outline-info' %></td>
+                <td><%= link_to 'Edit', edit_entry_path(entry),
+                      class: 'btn btn-outline-primary' %></td>
+                <td><%= link_to 'Delete', entry_url(entry),
+                      class: 'btn btn-outline-danger',
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
-<p class="text-center mt-3" style="max-width: 30rem;">
-  <%= link_to 'Main Menu', controller: 'welcome' %>
-</p>

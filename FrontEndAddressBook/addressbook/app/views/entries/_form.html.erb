@@ -1,40 +1,40 @@
-<%= form_with model: @entry, local: true do |form| %>
+<%= form_with model: @entry, url: entries_path, local: true do |form| %>
 
   <% if @entry.errors.any? %>
     <div id='error_explanation'>
-      <h3>
-        <%= pluralize(@entry.errors.count, 'error') %> prohibited this entry
-        from being saved:
-      </h2>
-      <ul>
-        <% @entry.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+      <h6>
+        <%= pluralize(@entry.errors.count, 'error')%>
+      </h6>
     </div>
+    <% @entry.errors.full_messages.each do |msg| %>
+      <div class="container alert alert-danger">
+        <%= flash[:danger] = msg %>
+      </div>
+    <% end %>
   <% end %>
 
   <p>
-    <%= form.label :firstname %>
-    <%= form.text_field :firstname %>
+    <%= form.text_field :firstname,
+             placeholder: 'First Name' %>
   </p>
   
   <p>
-    <%= form.label :lastname %>
-    <%= form.text_field :lastname %>
+    <%= form.text_field :lastname,
+             placeholder: 'Last Name' %>
   </p>
 
   <p>
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone,
+             placeholder: 'Phone Number' %>
   </p>
 
   <p>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email,
+             placeholder: 'Email' %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit :Submit, 
+             class: 'btn btn-outline-primary' %>
   </p>
 <% end %>
