@@ -1,6 +1,6 @@
 # tcvc-data-structure-challenge
 
-American Flag Sort
+Pancake Sort
 
 ### Description
 
