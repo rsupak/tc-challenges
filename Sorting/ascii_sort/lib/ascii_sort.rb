@@ -30,8 +30,6 @@ end
 # separate array into buckets keyed by the passed in count
 # then return separated buckets
 def bucketize(array, count)
-  p array
-  p count
   buckets = Array.new(256) { [] }
   array.each do |str|
     buckets[str[count].ord] << str
