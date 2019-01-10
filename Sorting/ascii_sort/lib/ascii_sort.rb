@@ -1,64 +1,53 @@
+# ASCII_sort is a form of bucket sort that sorts each strings by their 
+# ASCII values. The strings are recursively bucketized when longer than
+# 1 char && the initial buckets contain more than one value at that bucket
+# index. 
+
 # main method
-# ascii_sort sorts each string in the input array by the ascii value of the
-# first char in each string. it does this by creating a hash of each string
-# keyed by the ascii values of the first char in the string. Then if there
-# are multiple strings keyed into the bucket, it keys the sub-array by the
-# next char in the string until the strings are in sorted order, (each sub
-# array only contains 1 item. Finally it returns the flattened array.
 def ascii_sort(array)
-  index = 0
-  temp = asciitize(array, index)
-  temp.each.with_index do |arr, i|
-    temp[i] = asciitize(arr, index += 1).flatten if arr.length > 1
-  end
-  temp
-end
+  sorted_array = []
+  count = 0
+  # sort into buckets on the first ASCII value in the string 
+  # to initialize buckets array
+  buckets = bucketize(array, count)
 
-# sorts hashed array by ascii keys
-def sort_keys(hash)
-  key_array = quick_sort(hash.keys)
-  temp = []
-  key_array.each do |key|
-    temp << hash[key]
-  end
-  temp
-end
-
-# hashes the array by ascii value
-def ascii_hashify(array, index)
-  hash = {}
-  array.each do |str|
-    key = str[index].ord
-    if hash[key].nil?
-      hash[key] = [str]
+  # shift each bucket into the sorted array in the sorted order
+  # if a bucket contains more than one item, bucketize that bucket
+  # then shift that bucket into the sorted array.
+  until buckets.empty?
+    temp = buckets.shift
+    if validate(temp)
+      sorted_array << temp
+    elsif temp.size > 1 && temp.reject { |str| str == temp[0] }.empty?
+      sorted_array << temp
     else
-      hash[key] << str
+      buckets = bucketize(temp, count += 1) + buckets[0..-1]
     end
   end
-  hash
+  sorted_array.flatten
 end
 
-# sorts the ascii values of the first character in the string after hashing
-# using a sort method here because the hash is unsorted
-def quick_sort(array)
-  return [] if array.empty?
-
-  pivot = array.delete_at(rand(array.size))
-  left, right = array.partition { |num| pivot > num }
-
-  [*quick_sort(left), pivot, *quick_sort(right)]
+# separate array into buckets keyed by the passed in count
+# then return separated buckets
+def bucketize(array, count)
+  p array
+  p count
+  buckets = Array.new(256) { [] }
+  array.each do |str|
+    buckets[str[count].ord] << str
+  end
+  buckets.reject(&:empty?)
 end
 
-# arranges each string by ascii value by sorting the keys into buckets
-# keyed by the ascii value at the given index
-def asciitize(array, index)
-  hash = ascii_hashify(array, index)
-  sort_keys(hash)
+# validates bucket size passed to sorted array
+# if bucket size is invalide, the array is bucketized again
+def validate(bucket)
+  bucket.size == 1
 end
 
 if $PROGRAM_NAME == __FILE__
-  shuffled_array = ['Jeremy', 'Kenny', '#$#', '$$$', 'Christine',
-                    'Abby', 'Alexis', 'kenny', 'Jacob'].shuffle
+  shuffled_array = ['James', 'Kenny', 'Christine', 'Abby', 'Abby',
+                    'Alexis', 'kenny', '$$$', '#$#'].shuffle
 
   puts "Random Array: #{shuffled_array}"
   puts "Sorted Array: #{ascii_sort(shuffled_array)}"

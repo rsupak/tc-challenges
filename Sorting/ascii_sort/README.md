@@ -4,12 +4,10 @@ Ascii Sort
 
 ### Description
 
-Ascii_sort sorts each string in the input array by the ascii value of the
-first char in each string. it does this by creating a hash of each string
-keyed by the ascii values of the first char in the string. Then if there
-are multiple strings keyed into the bucket, it keys the sub-array by the
-next char in the string until the strings are in sorted order, (each sub
-array only contains 1 item. Finally it returns the flattened array.
+ASCII_sort is a form of bucket sort that sorts each strings by their ASCII values.
+The strings are recursively bucketized when longer than 1 char && the initial buckets
+contain more than one value at that bucket index. 
+
 
 ## Prerequisites
 
@@ -62,4 +60,4 @@ bundle exec rspec spec/ascii_sort_spec.rb
 # Link to Demo Videos
 
 Demo Video Link
-https://youtu.be/FRWmexUT0IE
+https://youtu.be/ZbsBy42Yv9U
