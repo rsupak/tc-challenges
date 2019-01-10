@@ -11,7 +11,7 @@ def ascii_sort(array)
   temp.each.with_index do |arr, i|
     temp[i] = asciitize(arr, index += 1).flatten if arr.length > 1
   end
-  temp.flatten
+  temp
 end
 
 # sorts hashed array by ascii keys
