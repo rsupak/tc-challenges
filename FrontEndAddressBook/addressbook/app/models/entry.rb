@@ -1,7 +1,22 @@
 class Entry < ApplicationRecord
   def self.import(file)
+    return unless file
+
     CSV.foreach(file.path, headers: true) do |row|
-      Entry.create! row.to_hash
+      entry = Entry.find_by(firstname: row['firstname'], lastname: row['lastname'])
+      if entry.present?
+        entry.update(row.to_hash)
+      else
+        Entry.create row.to_hash
+      end
+    end
+  end
+
+  def self.search(search)
+    if search
+      where(["lastname LIKE ?", "%#{search}%"])
+    else
+      all
     end
   end
 

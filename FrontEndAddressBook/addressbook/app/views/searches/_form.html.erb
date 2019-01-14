@@ -1,0 +1,27 @@
+<%= form_for @search, html: {class: "pure-form"} do |form| %>
+
+  <p>
+    <%= form.text_field :firstname,
+             placeholder: 'First Name' %>
+  </p>
+  
+  <p>
+    <%= form.text_field :lastname,
+             placeholder: 'Last Name' %>
+  </p>
+
+  <p>
+    <%= form.text_field :phone,
+             placeholder: 'Phone Number' %>
+  </p>
+
+  <p>
+    <%= form.text_field :email,
+             placeholder: 'Email' %>
+  </p>
+
+  <p>
+    <%= form.submit :Submit, 
+             class: 'btn btn-outline-primary' %>
+  </p>
+<% end %>

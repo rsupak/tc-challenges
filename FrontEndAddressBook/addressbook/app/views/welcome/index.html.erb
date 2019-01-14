@@ -2,17 +2,19 @@
   <h4 class="ml-3">
     Main Menu - <%= Entry.all.count %> entries
   </h4>
-  <p class="ml-3">
-    <%= link_to 'View all entries', controller: 'entries' %>
+  <p>
+  <button onclick="location.href='/entries'" class='btn btn-outline-primary'>View all entries</button>
   </p>
-  <p class="ml-3">
-    <%= link_to 'Create an entry', new_entry_path %>
+  <p>
+  <button onclick="location.href='/entries/new'" class='btn btn-outline-primary'>Add an entry</button>
   </p>
-  <p class="ml-3">Search for an entry</p>
-  <h4 class="ml-3">Import Entries from CSV</h4>
+  <p>
+  <button onclick="location.href='/searches/new'" class='btn btn-outline-primary'>Search for an entry</button>
+  </p>
+  <h5 class="ml-3">Import Entries from CSV</h5>
   <%= form_tag import_entries_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag :Import %>
+    <%= file_field_tag :file, accept: 'text/csv' %>
+    <%= submit_tag :Import, class: 'btn btn-outline-primary' %>
   <% end %>
   <p class="ml-3">Exit</p>
 </div>

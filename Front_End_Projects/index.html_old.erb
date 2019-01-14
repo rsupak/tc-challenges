@@ -7,13 +7,6 @@
       <% else %>
         <h4>All Entries</h4>
       <% end %>
-
-      <%= form_tag entries_path, method: :get do %>
-        <%= text_field_tag :search, params[:search], placeholder: 'Last Name' %>
-        <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-primary' %>
-      <% end %>
-
-      <br>
         <table>
           <thead>
             <tr>
@@ -45,8 +38,6 @@
       </div>
     </div>
   </div>
-  <br>
-  <%= will_paginate @entries %>
   <br>
   <div>
     <%= link_to 'Main Menu', root_url,

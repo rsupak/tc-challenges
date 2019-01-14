@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :entries do
     collection { post :import }
   end
+  resources :searches
 
   root 'welcome#index'
 end

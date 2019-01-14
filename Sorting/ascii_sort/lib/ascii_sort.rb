@@ -1,7 +1,7 @@
-# ASCII_sort is a form of bucket sort that sorts each strings by their 
+# ASCII_sort is a form of bucket sort that sorts each strings by their
 # ASCII values. The strings are recursively bucketized when longer than
 # 1 char && the initial buckets contain more than one value at that bucket
-# index. 
+# index.
 
 # main method
 def ascii_sort(array)

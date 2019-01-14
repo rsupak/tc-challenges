@@ -1,0 +1,38 @@
+<div class='container'>
+  <h4>Search Results</h4>
+
+  <% if @search.search_entries.empty? %>
+    <h5>Entry Not Found</h5>
+  <% else %>
+    <% @search.search_entries.each do |entry| %>
+      <div class="card bg-light mb-3" style="max-width: 30rem;">
+        <div class="card-header text-center"><strong>
+        <%= entry.lastname.capitalize%>
+        </strong></div>
+        <div class="card-body">
+          <p><strong>Name: </strong>
+            <%= entry.firstname.capitalize + ' ' + entry.lastname.capitalize %>
+          </p>
+          <p class="card-text"><strong>Phone: </strong>
+            <% phone = entry.phone.to_s %>
+            <%= "#{phone[0..2]}-#{phone[3..5]}-#{phone[6..9]}" %>
+          </p>
+          <p><strong>Email: </strong>
+            <%= entry.email %>
+          </p>
+        </div>
+        <div class="card-footer text-muted text-center">
+          <%= link_to 'Edit', edit_entry_path,
+                  class: 'btn btn-outline-primary'  %>
+          <%= link_to 'Back', entries_path,
+                  class: 'btn btn-outline-info' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= link_to 'Back', new_search_path,
+              class: 'btn btn-outline-info' %>
+  </div>
+</div>
