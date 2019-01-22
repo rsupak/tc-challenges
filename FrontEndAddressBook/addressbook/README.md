@@ -77,10 +77,8 @@ Updated - User interface improved to make selections easier.
 
 To Implement - considering a separate view for uploading CSV files to database
 
-The entry model validates the creation of each entry.
-
-After all links are built out, I will be adding the production db, and hosting the address
-book on heroku.
+# Current deployment
+https://address-book-rsupak.herokuapp.com/
 
 # Link to Demo Videos
 

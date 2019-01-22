@@ -3,7 +3,7 @@ class CreateEntries < ActiveRecord::Migration[5.2]
     create_table :entries do |t|
       t.string :firstname
       t.string :lastname
-      t.integer :phone
+      t.integer :phone, limit => 8
       t.string :email
 
       t.timestamps

@@ -3,13 +3,13 @@
     Main Menu - <%= Entry.all.count %> entries
   </h4>
   <p>
-  <button onclick="location.href='/entries'" class='btn btn-outline-primary'>View all entries</button>
+  <button onclick="window.location='/entries'" class='btn btn-outline-primary'>View all entries</button>
   </p>
   <p>
-  <button onclick="location.href='/entries/new'" class='btn btn-outline-primary'>Add an entry</button>
+  <button onclick="window.location='/entries/new'" class='btn btn-outline-primary'>Add an entry</button>
   </p>
   <p>
-  <button onclick="location.href='/searches/new'" class='btn btn-outline-primary'>Search for an entry</button>
+  <button onclick="window.location='/searches/new'" class='btn btn-outline-primary'>Search for an entry</button>
   </p>
   <h5 class="ml-3">Import Entries from CSV</h5>
   <%= form_tag import_entries_path, multipart: true do %>
