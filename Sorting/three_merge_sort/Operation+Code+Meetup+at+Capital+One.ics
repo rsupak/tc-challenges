@@ -1,0 +1,48 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Meetup//RemoteApi//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-ORIGINAL-URL:https://www.meetup.com/OperationCode-SeattleWA/events/2558
+ 32305/ical/Operation+Code+Meetup+at+Capital+One.ics
+X-WR-CALNAME:Events - Operation Code Meetup at Capital One.ics
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20190208T223834Z
+DTSTART;TZID=America/Los_Angeles:20190226T180000
+DTEND;TZID=America/Los_Angeles:20190226T203000
+STATUS:CONFIRMED
+SUMMARY:Operation Code Meetup at Capital One
+DESCRIPTION:Operation Code: Seattle\nTuesday\, February 26 at 6:00 PM\n\n
+ • What we'll do:You're invited to our Operation Code Meetup located at a
+ nd hosted by Capital One in Seattle! Our speakers will be sharing their 
+ experi...\n\nhttps://www.meetup.com/OperationCode-SeattleWA/events/25583
+ 2305/
+CLASS:PUBLIC
+CREATED:20181025T155853Z
+GEO:47.61;-122.33
+LOCATION:Capital One (501 Eastlake Ave E\, Suite 400\, Seattle\, WA 98109
+ )
+URL:https://www.meetup.com/OperationCode-SeattleWA/events/255832305/
+LAST-MODIFIED:20190124T042807Z
+UID:event_255832305@meetup.com
+END:VEVENT
+END:VCALENDAR
