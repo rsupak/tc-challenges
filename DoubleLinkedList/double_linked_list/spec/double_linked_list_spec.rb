@@ -1,6 +1,5 @@
 require_relative '../lib/double_linked_list'
 
-
 describe 'LinkedList' do
   let!(:linked_list) { DoubleLinkedList.new }
 
