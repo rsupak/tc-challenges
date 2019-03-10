@@ -1,0 +1,16 @@
+{
+  "name": "ip-counter",
+  "version": "1.0.0",
+  "description": "App for finding the number of available ip addresses in a range",
+  "main": "app.js",
+  "scripts": {
+    "test": "standard --fix && mocha || true"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "standard": "^12.0.1"
+  }
+}
