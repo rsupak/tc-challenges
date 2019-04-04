@@ -12,10 +12,11 @@ def quick_sort(array)
 
   pivot = array.delete_at(rand(array.size))
   left, right = array.partition { |num| pivot > num }
-
+  puts "Left: #{left}"
+  puts "Right: #{right}"
   [*quick_sort(left), pivot, *quick_sort(right)]
 end
 
-shuffled_array = Array.new(20) { rand(-1000...1000) }
+shuffled_array = Array.new(10) { rand(-100...100) }
 puts "Random Array: #{shuffled_array}"
 puts "Sorted Array: #{quick_sort(shuffled_array)}"

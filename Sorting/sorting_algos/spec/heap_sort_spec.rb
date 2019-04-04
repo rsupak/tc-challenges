@@ -1,7 +1,6 @@
-include RSpec
 require_relative 'heap_sort'
 
-describe "#heap_sort" do
+RSpec.describe "#heap_sort" do
   it "moves the largest integer to the end of the array" do
     expect( heap_sort([6,2,5,3,4]) ).to end_with 6
   end
