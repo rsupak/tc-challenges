@@ -12,7 +12,7 @@ class LinkedList
   def size
     count = 0
     current_node = @head
-    until current_node == nil
+    until current_node.nil?
       count += 1
       current_node = current_node.next
     end
@@ -20,20 +20,20 @@ class LinkedList
   end
 
   # This method creates a new `Node` using `data`, and inserts it at the end of the list.
-  def add_to_tail(node)
-    @tail.next = node if @tail != nil
+  def <<(node)
+    @tail.next = node unless @tail.nil?
     @tail = node
-    @head = node if @head == nil
+    @head = node if @head.nil?
   end
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
   def remove_tail
     current_node = @head
-    if self.size == 1
+    if size == 1
       @head = nil
       @tail = nil
     else
-      (self.size - 2).times do
+      (size - 2).times do
         current_node = current_node.next
       end
       current_node.next = nil
@@ -43,10 +43,10 @@ class LinkedList
 
   # This method prints out a representation of the list.
   def print
-    output = ""
+    output = ''
     current_node = @head
-    until current_node == nil
-      output << "#{current_node.value.to_s}\n"
+    until current_node.nil?
+      output << "#{current_node.value} ~> "
       current_node = current_node.next
     end
     puts output
@@ -57,14 +57,15 @@ class LinkedList
     current_node = @head
     previous_node = nil
     until current_node == node
-      return nil if current_node == nil
+      return nil if current_node.nil?
+
       previous_node = current_node
       current_node = current_node.next
     end
     if current_node == @head
-      self.remove_front
+      remove_front
     elsif current_node == @tail
-      self.remove_tail
+      remove_tail
     else
       previous_node.next = current_node.next
     end
@@ -94,20 +95,23 @@ class LinkedList
 
   # This methode removes the node at the given index
   def remove_at(index)
-    self.delete(self.find(index))
+    delete(find(index))
   end
 end
 
 list = LinkedList.new
-n1 = Node.new("Rob")
-n2 = Node.new("Ben")
-n3 = Node.new("Mike")
-n4 = Node.new("Ken")
+n1 = Node.new('1')
+n2 = Node.new('2')
+n3 = Node.new('3')
+n4 = Node.new('4')
+n5 = Node.new('5')
+n6 = Node.new('6')
 
-list.add_to_tail(n1)
-list.add_to_tail(n2)
-list.add_to_tail(n3)
-list.print
-puts ""
-list.remove_at(0)
-list.print
+list << n1
+list << n2
+list << n3
+list << n4
+list << n5
+list << n6
+
+p list.head.next

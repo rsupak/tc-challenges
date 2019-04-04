@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./counter.css">
+  <title>IP Address Counter</title>
+  <script src="./ip_address_counter.js"></script>
+</head>
+<body>
+  <div class="counter">
+    <h3 id="display"></h3>
+    <br>
+    <br>
+    <div>
+      <input type="text" name="ip-min" class="ip-min" id="ip-min" placeholder="0.0.0.0">Lower IP Address
+    </div>
+    <br>
+    <br>
+    <div>
+      <input type="text" name="ip-max" class="ip-max" id="ip-max" placeholder="255.255.255.255">Upper IP Address
+    </div>
+    <br>
+    <button onclick="count()">Calculate</button>
+  </div>
+</body>
+</html>

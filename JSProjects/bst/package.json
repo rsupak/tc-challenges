@@ -1,0 +1,14 @@
+{
+  "name": "bst",
+  "version": "1.0.0",
+  "description": "Open index.html in the test folder in a browser",
+  "main": "binary_tree.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -42,7 +42,7 @@ class Graph
     @nodes.each { |node| return node if node[:name] == name }
   end
 
-  # method for creating an edges in the graph.
+  # method for creating an edge in the graph.
   # first the method determines if node names passed in currently exist in the
   # graph, if so, it creates a new edge with nodes in graph, if not, it firsts
   # adds the node to the graph, then creates the connecting edge
