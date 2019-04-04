@@ -28,8 +28,8 @@ WIN = /(\w)(..(\1|.\1.)..\1|.\1.\1..$|\1\1(...)*$)/.freeze
 
 def re_ttt_checker(string)
   if string =~ WIN
-    winner = string.match(/(\w)/)
-    return "#{winner} wins"
+    winner = string.match(WIN)
+    return "#{winner[1]} wins"
   end
   return 'Keep Playing' if string.include?('-') && !string.match(WIN)
 
