@@ -32,4 +32,4 @@ describe '#dual_pivot_quicksort' do
   it 'handles negative numbers appropriately' do
     expect(dual_pivot_quicksort([6, 2, -11, 5, 3, 4])).to start_with(-11)
   end
-end 
+end
