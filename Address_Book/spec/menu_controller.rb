@@ -108,5 +108,5 @@ end
 ## UNCOMMENT THE LINES BELOW TO RUN MENU ##
 ## COMMENT THEM OUT TO RUN THE TEST ##
 
-# session = MenuController.new
-# session.display
+session = MenuController.new
+session.display
