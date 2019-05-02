@@ -1,4 +1,5 @@
 require 'node'
+require 'split_linked_list'
 
 RSpec.describe Node, type: Class do
   # test methods
