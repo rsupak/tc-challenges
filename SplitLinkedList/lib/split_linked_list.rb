@@ -55,7 +55,7 @@ def size(source)
   size
 end
 
-# creates array of of values from the front of the list then uses 
+# creates array of of values from the front of the list then uses
 # build_list_from_array to return a linked list to main method
 def front(front_ptr, back_ptr)
   current = front_ptr
@@ -102,5 +102,8 @@ end
 # test method
 if $PROGRAM_NAME == __FILE__
   list = build_list_from_array([1, 2, 3, 4, 5])
-  p front_back_split(list, Node.new, Node.new)
+  list2 = build_list_from_array([3, 1, 4, 2, 5, 6])
+  puts front_back_split(list, Node.new, Node.new)[0]
+  puts front_back_split(list, Node.new, Node.new)[1]
+  p front_back_split(list2, Node.new, Node.new)
 end

@@ -40,7 +40,7 @@ N/A
 ### Manual Deployment Notes
 
 ```bash
-ruby lib/node.rb
+ruby lib/split_linked_list.rb
 ```
 
 
@@ -55,3 +55,4 @@ bundle exec rspec spec/front_back_split_spec.rb
 # Link to Demo Videos
 
 Demo Video Link
+https://youtu.be/JA6fcUyVn6U

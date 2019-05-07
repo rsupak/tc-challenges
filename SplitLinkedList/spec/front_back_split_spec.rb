@@ -2,7 +2,7 @@ require 'node'
 require 'split_linked_list'
 
 RSpec.describe Node, type: Class do
-  # test methods
+  # test lists
   let(:build_one_two) { build_list_from_array([1,2]) }
   let(:build_one_two_three) { build_list_from_array([1, 2, 3]) }
   let(:build_one_two_three_four_five_six) { build_list_from_array([1, 2, 3, 4, 5, 6]) }
@@ -13,14 +13,14 @@ RSpec.describe Node, type: Class do
     end
 
     it 'should be able to handle cases where one argument is null' do
-      expect { front_back_split(nil, Node.new, Node.new)}.to raise_error('error should be thrown if source is null')
-      expect { front_back_split(Node.new, nil, Node.new)}.to raise_error('error should be thrown if front is null')
-      expect { front_back_split(Node.new, Node.new, nil)}.to raise_error('error should be thrown if back is null')
+      expect { front_back_split(nil, Node.new, Node.new) }.to raise_error('error should be thrown if source is null')
+      expect { front_back_split(Node.new, nil, Node.new) }.to raise_error('error should be thrown if front is null')
+      expect { front_back_split(Node.new, Node.new, nil) }.to raise_error('error should be thrown if back is null')
     end
 
     it 'should be able to handle a list of length 0 (empty list) or 1' do
-      expect { front_back_split(Node.new, Node.new, Node.new)}.to raise_error('error should be thrown if source has an empty node')
-      expect { front_back_split(Node.new(1), Node.new, Node.new)}.to raise_error('error should be thrown if source has only one node')
+      expect { front_back_split(Node.new, Node.new, Node.new) }.to raise_error('error should be thrown if source has an empty node')
+      expect { front_back_split(Node.new(1), Node.new, Node.new) }.to raise_error('error should be thrown if source has only one node')
     end
 
     it 'should be able to handle a list of length 2' do
@@ -51,7 +51,7 @@ RSpec.describe Node, type: Class do
       expect(front_back_split(source, front, back)[0]).to eq('front should be 3 -> 4 -> 6 -> 1 -> 2 -> 4 -> null')
       expect(front_back_split(source, front, back)[1]).to eq('back should be 2 -> 0 -> 3 -> 2 -> 6 -> null')
     end
-    
+
     it 'should be able to handle a list of length 16' do
       source = build_list_from_array([3, 4, 6, 1, 2, 4, 2, 0, 3, 2, 6, 6, 5, 1, 2, 9])
       front = Node.new
