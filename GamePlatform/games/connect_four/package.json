@@ -1,0 +1,30 @@
+{
+  "name": "connect_four",
+  "version": "3.0.5",
+  "description": "Connect Four game",
+  "main": "./dist/lib.js",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "yarn clean && parcel build index.html",
+    "build:lib": "yarn clean && parcel build ./src/lib.ts",
+    "prettier": "prettier --write \"src/**/*.?(ts|scss|css)\"",
+    "prepublishOnly": "yarn build:lib",
+    "clean": "shx rm -rf dist/"
+  },
+  "keywords": [
+    "connect-four",
+    "game"
+  ],
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0",
+    "prettier": "^1.16.1",
+    "shx": "^0.3.2",
+    "typescript": "^3.2.4"
+  },
+  "dependencies": {
+    "es6-promise": "^4.2.5"
+  }
+}
