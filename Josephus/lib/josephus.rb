@@ -5,7 +5,7 @@
 
 def josephus(arr, skip)
   return [] if arr.empty?
-  
+
   temp_arr = arr.clone
   result = []
   current_index = 0
