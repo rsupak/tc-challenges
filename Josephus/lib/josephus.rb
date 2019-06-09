@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 # Josephus Permutation
-# create a function that returns a Josephus permutation, taking as parameters
+# returns a Josephus permutation, taking as parameters
 # the initial array/list of items to be permuted as if they were in a circle
-# and counted out every k places until none remained.
+# and counted out every k (skip) places until none remained.
 
 def josephus(arr, skip)
   return [] if arr.empty?
+  return arr if arr.length == 1
 
   temp_arr = arr.clone
   result = []
