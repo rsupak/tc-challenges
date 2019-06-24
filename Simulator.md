@@ -1,8 +1,8 @@
 # Instance Branding
 ### The customer would like to alter the appearance of their newly-deployed ServiceNow platform.  Make the following changes:
 
-    1. Update the Banner Text to read: Simulator Client Instance
-    2. Update the Banner Colour to: #4790e7
+1. Update the Banner Text to read: Simulator Client Instance
+2. Update the Banner Colour to: #4790e7
 
 # Create an Incident Template
 ### To speed up incident creation at the service desk, the customer has requested a new template for a commonly-reported specific CI (Bond Trading) with impact and urgency set to medium, as well as auto-filling Incident Management as the assignment group.
