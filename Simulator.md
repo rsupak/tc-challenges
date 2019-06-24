@@ -156,7 +156,8 @@ It has been decided to delegate this responsibility to those holding the knowled
 
 1. Add the following function into the KBKnowledgeBase Script Include to permit KB deletions
 
-```canDelete: function(knowledgeBaseGr) {
+```
+canDelete: function(knowledgeBaseGr) {
 return true;
 },
 ```
