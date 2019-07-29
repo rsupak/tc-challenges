@@ -42,14 +42,14 @@ class LinkedList
   end
 
   # This method prints out a representation of the list.
-  def print
+  def to_s
     output = ''
     current_node = @head
     until current_node.nil?
       output << "#{current_node.value} ~> "
       current_node = current_node.next
     end
-    puts output
+    output
   end
 
   # This method removes `node` from the list and must keep the rest of the list intact.
