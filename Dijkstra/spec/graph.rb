@@ -97,7 +97,7 @@ class Graph
     unvisited = @graph.keys.compact
 
     until unvisited.empty?
-      u = nil?
+      u = nil
       unvisited.each do |min|
         u = min if !u || (@distance[min] && @distance[min] < distance[u])
       end
@@ -124,34 +124,35 @@ class Graph
 end
 
 # test code
-graph = Graph.new(26)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
-graph.add_node("D")
-graph.add_node("E")
-graph.add_node("F")
-graph.add_node("G")
-graph.add_node("H")
-graph.add_node("I")
-graph.add_node("J")
-graph.add_node("K")
-graph.add_node("L")
+graph = Graph.new(12)
+graph.add_node('A')
+graph.add_node('B')
+graph.add_node('C')
+graph.add_node('D')
+graph.add_node('E')
+graph.add_node('F')
+graph.add_node('G')
+graph.add_node('H')
+graph.add_node('I')
+graph.add_node('J')
+graph.add_node('K')
+graph.add_node('L')
 
-graph.add_edge("A", "B", 5)
-graph.add_edge("A", "C", 3)
-graph.add_edge("A", "D", 6)
-graph.add_edge("B", "E", 4)
-graph.add_edge("C", "F", 2)
-graph.add_edge("C", "G", 0)
-graph.add_edge("D", "H", 1)
-graph.add_edge("D", "I", 11)
-graph.add_edge("F", "J", 1)
-graph.add_edge("G", "K", 10)
-graph.add_edge("J", "L", 1)
+graph.add_edge('A', 'B', 5)
+graph.add_edge('A', 'C', 3)
+graph.add_edge('A', 'D', 6)
+graph.add_edge('A', 'G', 15)
+graph.add_edge('B', 'E', 4)
+graph.add_edge('C', 'F', 2)
+graph.add_edge('C', 'G', 10)
+graph.add_edge('D', 'H', 1)
+graph.add_edge('D', 'I', 11)
+graph.add_edge('F', 'J', 1)
+graph.add_edge('G', 'K', 10)
+graph.add_edge('J', 'L', 1)
 # pp graph.adjacency_matrix
-graph.dijkstra('A')
+graph.dijkstra('G')
 p graph.distance
 p graph.previous
 # p graph.find_shortest_path('A', 'F')
-# p graph.find_shortest_path('A', 'G')
+p graph.find_shortest_path('A', 'G')

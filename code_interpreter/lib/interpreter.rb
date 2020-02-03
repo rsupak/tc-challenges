@@ -1,7 +1,7 @@
 # a BrainF**k interpreter in Ruby
 # takes in a code and a string, manipulates string as instructed
 # then prints manipulated string to console.
-def brain_luck(code, input)
+def brain_luck(code, input = 255.chr)
   output = ''
   memory = [0]
   mp = 0 # memory_pointer (points to current location in memory)
@@ -94,4 +94,5 @@ if $PROGRAM_NAME == __FILE__
   p brain_luck(',+[-.,+]', 'Codewars' + 255.chr)
   p brain_luck(',[.[-],]', 'Codewars' + 0.chr)
   p brain_luck(',>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.', 8.chr + 9.chr)
+  print brain_luck('++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.')
 end

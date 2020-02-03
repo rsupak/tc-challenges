@@ -96,6 +96,15 @@ class BinarySearchTree
 
     !node.right.nil? ? find_parent(node.right, target) : nil
   end
+
+  def get_height(root)
+    height_left = 0
+    height_right = 0
+
+    height_left = get_height(root.left) + 1 unless root.left.zero?
+    height_right = get_height(root.right) + 1 unless root.right.zero?
+    height_left >= height_right ? height_left : height_right
+  end
 end
 
 root = Node.new('The Matrix', 87)
